@@ -1,0 +1,49 @@
+@import "/styles/variables.scss";
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+}
+
+.backToHome {
+  margin: 3rem 0 0;
+}
+
+.sideBlock {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  min-width: 160px;
+  max-width: 240px;
+  padding: 10px;
+  margin: 0.5em;
+  border-radius: 10px;
+  color: $sideTextColor;
+  background-color: $sideBackgroundColor;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(54, 54, 54, 0.60);
+  box-shadow: 0 3px 6px 0 rgba(54, 54, 54, 0.60);
+}
+
+.contentBlock{
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 0.5em 0.5em 0.5em 0.25em;
+  border: 1px solid #DBD8DB;
+  border-radius: 10px;
+  background-color: $contentBackgroundColor;
+  overflow-y: auto;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(54,54,54,0.60);
+  box-shadow: 0 3px 6px 0 rgba(54,54,54,0.60);
+}
+
+.secondary-block {
+  color: black;
+  font-family: 'IBM Plex Sans', sans-serif;
+}

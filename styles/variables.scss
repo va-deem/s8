@@ -1,0 +1,35 @@
+$contentBackgroundColor: #e6e6e6;
+$sideBackgroundColor: #363636;
+
+$textColor: #363636;
+
+$sideTextColor: #e6e6e6;
+$sideLinkColor: #e6e6e6;
+$sideLinkColorHover: #e6e6e6;
+$buttonTextHover: #B25E8E;
+
+$inputBorder: #DBD8DB;
+$inputBorderHover: #2C7155;
+$inputText: #666666;
+$inputPlaceholder: #999999;
+
+/* BREAKPOINTS */
+$xs:     480px;
+$xs-min: $xs;
+$xs-max: $xs-min - 1;
+
+$sm:     768px;
+$sm-min: $sm;
+$sm-max: $sm-min - 1;
+
+$md:     1025px;
+$md-min: $md;
+$md-max: $md-min - 1;
+
+$lg:     1280px;
+$lg-min: $lg;
+$lg-max: $lg-min - 1;
+
+$xl:     1920px;
+$xl-min: $xl;
+$xl-max: $xl-min - 1;
