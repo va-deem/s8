@@ -61,13 +61,13 @@ export default function Layout({
 
       <main className={styles.contentBlock}>
         <div>{children}</div>
-        {!adminHome && (
-          <div className={styles.backToHome}>
-            <Link href="/admin">
-              <a>← Back</a>
-            </Link>
-          </div>
-        )}
+        {/*{!adminHome && (*/}
+        {/*  <div className={styles.backToHome}>*/}
+        {/*    <Link href="/admin">*/}
+        {/*      <a>← Back</a>*/}
+        {/*    </Link>*/}
+        {/*  </div>*/}
+        {/*)}*/}
       </main>
     </div>
   );

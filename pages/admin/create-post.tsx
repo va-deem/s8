@@ -1,8 +1,8 @@
 import Layout, { siteTitle } from '../../components/admin/layout';
 import Head from 'next/head';
-import Form from './_form';
+import PostForm from '../../components/admin/_post-form';
 
-export default function CreatePost() {
+const CreatePost = () => {
   return (
     <Layout>
       <Head>
@@ -10,8 +10,10 @@ export default function CreatePost() {
       </Head>
 
       <section>
-        <Form />
+        <PostForm />
       </section>
     </Layout>
   );
-}
+};
+
+export default CreatePost;
