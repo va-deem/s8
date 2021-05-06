@@ -49,7 +49,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
               </Link>
             </p>
             <p className="link-auth">
-              <Link href="/auth">
+              <Link href="/admin">
                 <a className="link auth">Admin section</a>
               </Link>
             </p>
@@ -82,7 +82,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         {!home && (
           <div className={styles.backToHome}>
             <Link href="/">
-              <a>← Back</a>
+              <a>← Back to home page</a>
             </Link>
           </div>
         )}
