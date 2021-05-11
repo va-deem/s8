@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../../components/admin/layout';
+import Layout from '../../components/admin/layout';
 
 const AdminIndexPage = () => {
   return (

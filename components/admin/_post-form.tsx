@@ -1,10 +1,4 @@
-const PostForm = () => {
-  const createPost = (event) => {
-    event.preventDefault();
-
-    console.log(event.target.elements);
-  };
-
+const PostForm = ({ createPost }: { createPost: (event) => void }) => {
   return (
     <form onSubmit={createPost} className="post-form">
       <label htmlFor="subject" className="post-form__label">

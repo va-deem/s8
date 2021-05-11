@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.scss';
-import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 import { GetStaticProps } from 'next';
 import prisma from '../lib/prisma';
+import { PostInterface } from '../types';
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await prisma.post.findMany();
@@ -15,16 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function Home({
-  data,
-}: {
-  data: {
-    content: string;
-    subject: string;
-    id: number;
-    createdAt;
-  }[];
-}) {
+export default function Home({ data }: { data: PostInterface[] }) {
   return (
     <Layout home>
       <Head>
@@ -33,7 +24,7 @@ export default function Home({
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h1 className={utilStyles.headingXl}>Blog</h1>
         <ul className={utilStyles.list}>
-          {data.map(({ id, content, subject, createdAt }) => (
+          {data.map(({ id, subject, createdAt }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{subject}</a>
