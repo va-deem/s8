@@ -5,23 +5,24 @@ import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 import { GetStaticProps } from 'next';
+import prisma from '../lib/prisma';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
+  const data = await prisma.post.findMany();
+
   return {
-    props: {
-      allPostsData,
-    },
+    props: { data },
   };
 };
 
 export default function Home({
-  allPostsData,
+  data,
 }: {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
+  data: {
+    content: string;
+    subject: string;
+    id: number;
+    createdAt;
   }[];
 }) {
   return (
@@ -29,18 +30,17 @@ export default function Home({
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h1 className={utilStyles.headingXl}>Blog</h1>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {data.map(({ id, content, subject, createdAt }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+                <a>{subject}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date dateString={date} />
+                <Date date={createdAt} />
               </small>
             </li>
           ))}
