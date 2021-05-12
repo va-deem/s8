@@ -19,8 +19,8 @@
   width: 15%;
   min-width: 160px;
   max-width: 240px;
-  padding: 10px;
-  margin: 0.5em;
+  padding: 2em;
+  margin: 1em;
   border-radius: 10px;
   color: $sideTextColor;
   background-color: $sideBackgroundColor;
@@ -33,14 +33,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 10px 20px;
-  margin: 0.5em 0.5em 0.5em 0.25em;
-  border: 1px solid #DBD8DB;
+  padding: 2em;
+  margin: 1em 1em 1em 0.5em;
+  //border: 1px solid #DBD8DB;
   border-radius: 10px;
-  background-color: $contentBackgroundColor;
+  background-color: white;
   overflow-y: auto;
-  -webkit-box-shadow: 0 3px 6px 0 rgba(54,54,54,0.60);
-  box-shadow: 0 3px 6px 0 rgba(54,54,54,0.60);
+  //-webkit-box-shadow: 0 3px 6px 0 rgba(54,54,54,0.60);
+  //box-shadow: 0 3px 6px 0 rgba(54,54,54,0.60);
 }
 
 .secondary-block {

@@ -1,3 +1,5 @@
+@import "/styles/variables.scss";
+
 .heading2Xl {
   font-size: 2.5rem;
   line-height: 1.2;
@@ -13,7 +15,7 @@
   font-weight: 800;
   letter-spacing: -0.05rem;
   margin: 0 0 1rem 0;
-  border: 1px solid blue;
+  //border: 1px solid blue;
 }
 
 .headingLg {
@@ -26,7 +28,7 @@
 .headingMd {
   font-size: 1.2rem;
   line-height: 1.5;
-  border: 1px solid red;
+  //border: 1px solid red;
 }
 
 .borderCircle {
@@ -41,16 +43,25 @@
   padding-top: 1px;
 }
 
-.list {
+.postlist {
   list-style: none;
   padding: 0;
   margin: 0;
+
+  .postlist__item {
+    margin: 0 0 1.25rem;
+
+    .postlist__title {
+      font-weight: bold;
+      color: $textColor;
+    }
+
+    .postlist__date {
+      margin: 0;
+      font-size: 0.8em;
+      color: #666;
+    }
+  }
 }
 
-.listItem {
-  margin: 0 0 1.25rem;
-}
 
-.lightText {
-  color: #666;
-}

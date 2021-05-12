@@ -24,57 +24,33 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
       </Head>
 
       <aside className={styles.sideBlock}>
-        {home ? (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/avatar.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="noLink">
-                <h1>S8 Blog</h1>
-              </a>
-            </Link>
-            <p>
-              <Link href="/about">
-                <a className="link">About</a>
-              </Link>
-            </p>
-            <p className="link-auth">
-              <Link href="/admin">
-                <a className="link auth">Admin section</a>
-              </Link>
-            </p>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/avatar.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        <Link href="/">
+          <a>
+            <Image
+              priority
+              src="/images/avatar.jpg"
+              className={utilStyles.borderCircle}
+              height={108}
+              width={108}
+              alt={name}
+            />
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="noLink">
+            <h1>S8 Blog</h1>
+          </a>
+        </Link>
+        <p>
+          <Link href="/about">
+            <a className="link">About</a>
+          </Link>
+        </p>
+        <p className="link-auth">
+          <Link href="/admin">
+            <a className="link auth">Admin section</a>
+          </Link>
+        </p>
       </aside>
       <main className={styles.contentBlock}>
         <div>{children}</div>
@@ -82,7 +58,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         {!home && (
           <div className={styles.backToHome}>
             <Link href="/">
-              <a>← Back to home page</a>
+              <a>← Back</a>
             </Link>
           </div>
         )}

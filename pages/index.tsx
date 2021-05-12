@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.scss';
+import ustyles from '../styles/utils.module.scss';
 import Link from 'next/link';
 import Date from '../components/date';
 import { GetStaticProps } from 'next';
@@ -21,18 +21,18 @@ export default function Home({ data }: { data: PostInterface[] }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h1 className={utilStyles.headingXl}>Blog</h1>
-        <ul className={utilStyles.list}>
+      <section className={`${ustyles.headingMd} ${ustyles.padding1px}`}>
+        <h1 className={ustyles.headingXl}>Recent posts</h1>
+        <hr />
+        <ul className={ustyles.postlist}>
           {data.map(({ id, subject, createdAt }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li className={ustyles.postlist__item} key={id}>
               <Link href={`/posts/${id}`}>
-                <a>{subject}</a>
+                <a className={ustyles.postlist__title}>{subject}</a>
               </Link>
-              <br />
-              <small className={utilStyles.lightText}>
+              <p className={ustyles.postlist__date}>
                 <Date date={createdAt} />
-              </small>
+              </p>
             </li>
           ))}
         </ul>
