@@ -7,6 +7,9 @@ import { PostInterface } from '../../types';
 import Date from '../../components/date';
 import { useRouter } from 'next/router';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await prisma.post.findMany({
     orderBy: {
@@ -21,7 +24,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
   const router = useRouter();
 
-  const handlePostDelete = async (id) => {
+  const handlePostDelete = async (event, id) => {
+    event.preventDefault();
+
     const answer = confirm('Are you sure you want to delete this post?');
     if (!answer) return;
 
@@ -51,13 +56,17 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
       </div>
 
       <section className="blogs-section">
-        <table>
-          <thead>
-          <td>Subject</td>
-          <td>Date and time</td>
-          <td>Actions</td>
+        <i className="fas fa-fish" />
+        <i className="fas fa-frog" />
+        <i className="fas fa-user-ninja vanished" />
+        <i className="fab fa-facebook" />
+        <table className="blogs-table">
+          <thead className="blogs-table__head">
+            <th>Subject</th>
+            <th>Date and time</th>
+            <th>Actions</th>
           </thead>
-          <tbody>
+          <tbody className="blogs-table__body">
             {data.map(({ id, subject, createdAt }) => (
               <tr key={id}>
                 <td>
@@ -69,7 +78,22 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
                   <Date date={createdAt} />
                 </td>
                 <td>
-                  <button onClick={() => handlePostDelete(id)}>Delete</button>
+                  <Link href="/">
+                    <a
+                      role="button"
+                      tabIndex={0}
+                      className="fa-icons"
+                      onClick={(e) => handlePostDelete(e, id)}
+                    >
+                      <FontAwesomeIcon icon={faTrashAlt} />
+                    </a>
+                  </Link>
+
+                  <Link href={`/posts/${id}`}>
+                    <a className="fa-icons">
+                      <FontAwesomeIcon icon={faEye} />
+                    </a>
+                  </Link>
                 </td>
               </tr>
             ))}

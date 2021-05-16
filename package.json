@@ -9,6 +9,9 @@
     "lint": "eslint './pages/**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@prisma/client": "^2.22.1",
     "date-fns": "^2.21.1",
     "gray-matter": "^4.0.2",

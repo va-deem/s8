@@ -25,4 +25,48 @@
 
 .blogs-section {
   margin: 2em 0;
+
+  .blogs-table {
+    width: 50%;
+    padding: 1em;
+
+    .blogs-table__head th {
+      border-bottom: 1px solid gray;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    .blogs-table__body {
+
+      td:not(:first-child) {
+        text-align: center;
+      }
+    }
+
+    td {
+      padding: .5em 0;
+    }
+  }
+}
+
+.fa-icons {
+  svg {
+    height: 1em;
+  }
+
+  &:not(:last-child) {
+    margin-right: .7em;
+  }
+
+  &.with-text {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: .5em;
+    }
+    color: inherit;
+  }
 }

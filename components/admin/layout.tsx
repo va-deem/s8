@@ -3,6 +3,8 @@ import Image from 'next/image';
 import styles from '../layout.module.scss';
 import utilStyles from '../../styles/utils.module.scss';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const name = 'Vadim';
 export const siteTitle = 'Admin section';
@@ -54,7 +56,10 @@ export default function Layout({
         </p>
         <p className="link-auth">
           <Link href="/">
-            <a className="link auth">← Out</a>
+            <a className="fa-icons with-text">
+              <FontAwesomeIcon icon={faChevronCircleLeft} />
+              Log out
+            </a>
           </Link>
         </p>
       </aside>

@@ -3,6 +3,8 @@ import Image from 'next/image';
 import styles from './layout.module.scss';
 import utilStyles from '../styles/utils.module.scss';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const name = 'Vadim';
 export const siteTitle = 'Next.js Sample Website';
@@ -48,7 +50,10 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         </p>
         <p className="link-auth">
           <Link href="/admin">
-            <a className="link auth">Admin section</a>
+            <a className="fa-icons with-text">
+              <FontAwesomeIcon icon={faChevronCircleRight} />
+              Log in
+            </a>
           </Link>
         </p>
       </aside>
