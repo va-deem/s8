@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
       const post = await prisma.post.update({
-        where: { id: 100 },
+        where: { id: Number(postId) },
         data: {
           subject,
           content,

@@ -62,9 +62,11 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
         <i className="fab fa-facebook" />
         <table className="blogs-table">
           <thead className="blogs-table__head">
-            <th>Subject</th>
-            <th>Date and time</th>
-            <th>Actions</th>
+            <tr>
+              <th>Subject</th>
+              <th>Date and time</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody className="blogs-table__body">
             {data.map(({ id, subject, createdAt }) => (
