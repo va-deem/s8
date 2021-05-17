@@ -5,7 +5,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { postId } = req.query;
 
   if (req.method === 'PUT') {
-    const { subject, content }: { subject: string; content: string } = req.body;
+    const {
+      subject,
+      content,
+      contentHtml,
+    }: { subject: string; content: string; contentHtml: string } = req.body;
 
     try {
       const post = await prisma.post.update({
@@ -13,6 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         data: {
           subject,
           content,
+          contentHtml,
         },
       });
       res.status(200).json({ post });

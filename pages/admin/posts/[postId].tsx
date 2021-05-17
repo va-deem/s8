@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import prisma from '../../../lib/prisma';
 import { PostInterface } from '../../../types';
 import { useRouter } from 'next/router';
+import convertToHtml from '../../../lib/mdToHtml';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
@@ -22,11 +23,14 @@ const UpdatePost = ({ postData }: { postData: PostInterface }) => {
   const handlePostUpdate = async (event) => {
     event.preventDefault();
 
+    const htmlOutput = convertToHtml(event.target.content.value);
+
     try {
       const response = await fetch(`/api/posts/${postData.id}`, {
         body: JSON.stringify({
           subject: event.target.subject.value,
           content: event.target.content.value,
+          contentHtml: htmlOutput,
         }),
         headers: {
           'Content-Type': 'application/json',

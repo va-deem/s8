@@ -74,3 +74,43 @@ img {
   border: none;
 }
 
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .post-list__item {
+    margin: 0 0 1.25rem;
+
+    .post-list__title {
+      font-weight: bold;
+      color: $textColor;
+    }
+
+    .post-list__date {
+      margin: 0;
+      font-size: 0.8em;
+      color: #666;
+    }
+  }
+}
+
+.post-view {
+  width: 50%;
+
+  .post-view__title {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .post-view__date {
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  .post-view__content {
+
+  }
+}
+
+

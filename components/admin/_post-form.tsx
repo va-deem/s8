@@ -1,6 +1,6 @@
-import { PostInterface } from '../../types';
 import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
+import { PostInterface } from '../../types';
 
 const PostForm = ({
   submitForm,
@@ -9,7 +9,7 @@ const PostForm = ({
   submitForm: (event) => void;
   postData?: PostInterface;
 }) => {
-  const [markdown, setMarkdown] = useState(postData.content || '');
+  const [markdown, setMarkdown] = useState(postData?.content || '');
 
   const handlePost = (e) => {
     setMarkdown(e.target.value);
@@ -31,7 +31,6 @@ const PostForm = ({
         id="content"
         className="post-form__textarea"
         rows={7}
-        // defaultValue={postData?.content || null}
         value={markdown}
         onChange={handlePost}
       />

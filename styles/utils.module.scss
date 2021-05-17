@@ -43,25 +43,5 @@
   padding-top: 1px;
 }
 
-.postlist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  .postlist__item {
-    margin: 0 0 1.25rem;
-
-    .postlist__title {
-      font-weight: bold;
-      color: $textColor;
-    }
-
-    .postlist__date {
-      margin: 0;
-      font-size: 0.8em;
-      color: #666;
-    }
-  }
-}
 
 

@@ -28,13 +28,13 @@ export default function Home({ data }: { data: PostInterface[] }) {
       <section className={`${ustyles.headingMd} ${ustyles.padding1px}`}>
         <h1 className={ustyles.headingXl}>Recent posts</h1>
         <hr />
-        <ul className={ustyles.postlist}>
+        <ul className="post-list">
           {data.map(({ id, subject, createdAt }) => (
-            <li className={ustyles.postlist__item} key={id}>
+            <li className="post-list__item" key={id}>
               <Link href={`/posts/${id}`}>
-                <a className={ustyles.postlist__title}>{subject}</a>
+                <a className="post-list__title">{subject}</a>
               </Link>
-              <p className={ustyles.postlist__date}>
+              <p className="post-list__date">
                 <Date date={createdAt} />
               </p>
             </li>
