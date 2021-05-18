@@ -43,22 +43,22 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
             <h1>S8 Blog</h1>
           </a>
         </Link>
-        <p>
-          <Link href="/about">
-            <a className="link">About</a>
-          </Link>
-        </p>
+        <Link href="/">
+          <a className="link">Posts</a>
+        </Link>
+        <Link href="/about">
+          <a className="link">About</a>
+        </Link>
         <p className="link-auth">
           <Link href="/admin">
             <a className="fa-icons with-text">
               <FontAwesomeIcon icon={faChevronCircleRight} />
-              Log in
             </a>
           </Link>
         </p>
       </aside>
       <main className={styles.contentBlock}>
-        <div>{children}</div>
+        <>{children}</>
 
         {!home && (
           <div className={styles.backToHome}>

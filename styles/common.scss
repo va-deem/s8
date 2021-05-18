@@ -1,0 +1,28 @@
+form {
+  input, textarea {
+    padding: .4em;
+    border: 1px solid #ececec;
+    border-radius: 3px;
+    font: inherit;
+  }
+
+  textarea {
+
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: .2em .4em;
+  margin-right: .3em;
+  border-radius: .5em;
+  background-color: #ececec;
+  font-size: 0.7em;
+
+  svg {
+    height: 1em;
+    margin-left: .2em;
+    cursor: pointer;
+  }
+}

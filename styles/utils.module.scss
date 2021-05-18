@@ -1,34 +1,36 @@
 @import "/styles/variables.scss";
 
 .heading2Xl {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
   margin: 1rem 0;
   border: 1px solid brown;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.05rem;
 }
 
 .headingXl {
-  font-size: 2rem;
-  line-height: 1.3;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
   margin: 0 0 1rem 0;
-  //border: 1px solid blue;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.05rem;
 }
 
 .headingLg {
-  font-size: 1.5rem;
-  line-height: 1.4;
   margin: 1rem 0;
   border: 1px solid green;
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 
 .headingMd {
+  height: 100%;
   font-size: 1.2rem;
   line-height: 1.5;
-  //border: 1px solid red;
+  overflow-x: hidden;
+  overflow-y: auto;
+
 }
 
 .borderCircle {

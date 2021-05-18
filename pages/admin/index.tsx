@@ -15,6 +15,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     orderBy: {
       createdAt: 'desc',
     },
+    include: {
+      tags: true,
+    },
   });
   return {
     props: { data },
@@ -56,10 +59,6 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
       </div>
 
       <section className="blogs-section">
-        <i className="fas fa-fish" />
-        <i className="fas fa-frog" />
-        <i className="fas fa-user-ninja vanished" />
-        <i className="fab fa-facebook" />
         <table className="blogs-table">
           <thead className="blogs-table__head">
             <tr>

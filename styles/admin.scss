@@ -1,6 +1,5 @@
 .post-form {
   width: 50%;
-  padding-top: 2em;
 
   .post-form__label {
     display: block;
@@ -42,6 +41,8 @@
 
       td:not(:first-child) {
         text-align: center;
+        white-space: nowrap;
+        padding: 0 .7em;
       }
     }
 

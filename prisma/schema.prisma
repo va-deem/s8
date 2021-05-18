@@ -8,11 +8,28 @@ datasource db {
 }
 
 model Post {
-  id            Int       @id @default(autoincrement())
-  subject       String    @unique
+  id            Int           @id @default(autoincrement())
+  subject       String        @unique
   content       String
   contentHtml   String?
-  isPublished   Boolean   @default(false)
-  createdAt     DateTime  @default(now())
+  isPublished   Boolean       @default(false)
+  tags          TagsOnPosts[]
+  createdAt     DateTime      @default(now())
   publishedAt   DateTime?
+}
+
+model Tag {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  posts         TagsOnPosts[]
+}
+
+model TagsOnPosts {
+  post        Post            @relation(fields: [postId], references: [id])
+  postId      Int             // relation scalar field (used in the `@relation` attribute above)
+  tag         Tag             @relation(fields: [tagId], references: [id])
+  tagId       Int             // relation scalar field (used in the `@relation` attribute above)
+  createdAt   DateTime        @default(now())
+
+  @@id([postId, tagId])
 }

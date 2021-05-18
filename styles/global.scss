@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
+
 @import "/styles/variables.scss";
 @import "/styles/admin.scss";
+@import "/styles/common.scss";
 
 html,
 body,
 body > div:first-child,
 div#__next,
 div#__next > div {
-  font-family: 'Source Sans Pro', sans-serif;
-  overflow: auto;
   width: 100%;
   height: 100%;
-  margin: 0;
   padding: 0;
-  font-size: 16px;
+  margin: 0;
   color: $textColor;
-  background-color: $contentBackgroundColor;
+  background-color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
 }
 
 * {
@@ -33,22 +37,21 @@ a:hover {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
-
-
 .link {
+  margin-bottom: .7em;
   color: $sideLinkColor;
-  text-decoration: none;
   font-family: 'IBM Plex Sans', sans-serif;
+  text-decoration: none;
 
   &.auth {
     color: $sideLinkColor;
-    text-decoration: none;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: small;
+    text-decoration: none;
   }
 
 
@@ -63,34 +66,34 @@ img {
 }
 
 .info {
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #ffffff;
 }
 
 .noLink {
+  border: none;
   color: #ffffff;
   text-decoration: none;
-  border: none;
 }
 
 .post-list {
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 
   .post-list__item {
     margin: 0 0 1.25rem;
 
     .post-list__title {
-      font-weight: bold;
       color: $textColor;
+      font-weight: bold;
     }
 
     .post-list__date {
       margin: 0;
-      font-size: 0.8em;
       color: #666;
+      font-size: 0.8em;
     }
   }
 }
@@ -99,17 +102,19 @@ img {
   width: 50%;
 
   .post-view__title {
-    font-size: 2rem;
     margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .post-view__date {
-    font-size: 0.8em;
+    margin-top: .3em;
     color: #666;
+    font-size: 0.8em;
   }
 
   .post-view__content {
-
+    margin-top: 1em;
   }
 }
 

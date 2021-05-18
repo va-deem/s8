@@ -10,6 +10,7 @@ import convertToHtml from '../../../lib/mdToHtml';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
     where: { id: Number(params.postId) },
+    include: { tags: { include: { tag: true } } },
   });
 
   return {

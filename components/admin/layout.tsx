@@ -58,7 +58,6 @@ export default function Layout({
           <Link href="/">
             <a className="fa-icons with-text">
               <FontAwesomeIcon icon={faChevronCircleLeft} />
-              Log out
             </a>
           </Link>
         </p>

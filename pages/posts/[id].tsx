@@ -9,6 +9,9 @@ import { GetServerSideProps } from 'next';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
     where: { id: Number(params.id) },
+    include: {
+      tags: true,
+    },
   });
 
   return {
