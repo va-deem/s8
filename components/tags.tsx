@@ -1,8 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { TagInterface } from '../types';
 
-const Tags = ({ tags, deleteTag }) => {
+type TagProps = {
+  tags: TagInterface[];
+  deleteTag?: (event: any) => void;
+};
+
+const Tags = ({ tags, deleteTag }: TagProps) => {
   const renderTag = (tag) => (
     <span key={tag.id} className="tag" data-id={tag.id}>
       {tag.name}

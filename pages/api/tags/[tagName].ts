@@ -3,15 +3,15 @@ import prisma from '../../../lib/prisma';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(req.query);
-  // const { tagName }: { tagName: string } = req.query;
+  const { tagName }: { tagName: string } = req.query;
 
   if (req.method === 'GET') {
     try {
-      const tag = await prisma.tag.findUnique({
-        where: { name: req.query.tagName },
+      const tags = await prisma.tag.findMany({
+        where: { name: tagName },
       });
-      if (tag) {
-        res.status(200).json({ tag });
+      if (tags.length) {
+        res.json(tags);
       } else {
         res.status(404).end();
       }

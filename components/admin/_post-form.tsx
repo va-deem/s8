@@ -1,37 +1,19 @@
 import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
 import { PostInterface } from '../../types';
-import Tags from '../tags';
+import Select from './select';
 
-const PostForm = ({
-  submitForm,
-  postData,
-}: {
+type PostFormProps = {
   submitForm: (event) => void;
   postData?: PostInterface;
-}) => {
+};
+
+const PostForm = ({ submitForm, postData }: PostFormProps) => {
   const [markdown, setMarkdown] = useState(postData?.content || '');
-  const [tags, setTags] = useState(postData.tags);
-  const [tag, setTag] = useState('');
 
   const handlePost = (e) => {
     setMarkdown(e.target.value);
   };
-
-  const deleteTag = (event) => {
-    const tagId: number = event.target.closest('span').dataset.id;
-    const filteredTags = tags.filter((t) => t.tag.id !== Number(tagId));
-    setTags(filteredTags);
-  };
-
-  const findTag = async (event) => {
-    setTag(event.target.value);
-    console.log('TAG', tag);
-    // const response = await fetch(`/api/tags&name=${event.target.value}`);
-    const response = await fetch(`/api/tags/${event.target.value}`);
-    const data = await response.json();
-    console.log(data);
-  }
 
   return (
     <form onSubmit={submitForm} className="post-form">
@@ -52,18 +34,10 @@ const PostForm = ({
         value={markdown}
         onChange={handlePost}
       />
-      <label htmlFor="tags" className="post-form__label">
+      <label htmlFor="react-select-17-input" className="post-form__label">
         Tags
       </label>
-      <input
-        id="tags"
-        type="text"
-        className="post-form__input"
-        // defaultValue={tagsString}
-        required
-        onChange={findTag}
-      />
-      <Tags tags={tags} deleteTag={deleteTag} />
+      <Select initialValues={postData.tags.map((t) => t.tag)} />
       <button type="submit" className="post-form__button">
         Save
       </button>
