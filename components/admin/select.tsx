@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
-import AsyncSelect from 'react-select/async';
+import AsyncCreatableSelect from 'react-select/async-creatable';
 import { TagInterface } from '../../types';
 
-const Select = ({ initialValues }: { initialValues: TagInterface[] }) => {
+type SelectProps = {
+  initialValues: TagInterface[];
+  handleSelect: (a) => void;
+};
+
+const Select = ({ initialValues, handleSelect }: SelectProps) => {
   const [inputValue, setValue] = useState('');
-  const [selectedValue, setSelectedValue] = useState(initialValues);
 
-  const handleInputChange = (value) => {
-    setValue(value);
-  };
+  const handleInputChange = (value) => setValue(value);
 
-  const handleChange = (value) => {
-    setSelectedValue(value);
+  // TODO set types
+  const handleChange = (newValue: any, actionMeta: any) => {
+    console.group('Value Changed');
+    console.log(newValue);
+    handleSelect(newValue);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
   };
 
   const loadOptions = () => {
@@ -20,17 +27,22 @@ const Select = ({ initialValues }: { initialValues: TagInterface[] }) => {
 
   return (
     <div className="multiselect">
-      <AsyncSelect
+      <AsyncCreatableSelect
         isMulti
         cacheOptions
         defaultOptions={initialValues}
         defaultValue={initialValues}
-        value={selectedValue}
         getOptionLabel={(e) => e.name}
         getOptionValue={(e) => e.id}
+        getNewOptionData={(inputValue, optionLabel) => ({
+          label: optionLabel,
+          name: inputValue,
+          __isNew__: true,
+        })}
         loadOptions={loadOptions}
         onInputChange={handleInputChange}
         onChange={handleChange}
+        instanceId={'react-select-9090'}
       />
     </div>
   );

@@ -9,39 +9,55 @@ type PostFormProps = {
 };
 
 const PostForm = ({ submitForm, postData }: PostFormProps) => {
-  const [markdown, setMarkdown] = useState(postData?.content || '');
+  const [contentValue, setContentValue] = useState(postData?.content || '');
+  const [selectValue, setSelectValue] = useState('');
+  const [subjectValue, setSubjectValue] = useState('');
 
-  const handlePost = (e) => {
-    setMarkdown(e.target.value);
+  const handleContent = (e) => {
+    setContentValue(e.target.value);
   };
+
+  const handleSubject = (e) => {
+    setSubjectValue(e.target.value);
+  };
+
+  const handleSelect = (a) => setSelectValue(a);
+
+  console.log(subjectValue, contentValue, selectValue);
 
   return (
     <form onSubmit={submitForm} className="post-form">
       <label htmlFor="subject" className="post-form__label">
         Subject
       </label>
+
       <input
         id="subject"
         type="text"
         className="post-form__input"
-        defaultValue={postData?.subject}
+        value={postData?.subject || subjectValue}
+        onChange={handleSubject}
         required
       />
+
       <textarea
         id="content"
         className="post-form__textarea"
         rows={7}
-        value={markdown}
-        onChange={handlePost}
+        value={contentValue}
+        onChange={handleContent}
       />
-      <label htmlFor="react-select-17-input" className="post-form__label">
+
+      <label htmlFor="react-select-9090" className="post-form__label">
         Tags
       </label>
-      <Select initialValues={postData.tags.map((t) => t.tag)} />
+      <Select handleSelect={handleSelect} initialValues={postData?.tags.map((t) => t.tag)} />
+
       <button type="submit" className="post-form__button">
         Save
       </button>
-      <ReactMarkdown className="preview">{markdown}</ReactMarkdown>
+
+      <ReactMarkdown className="preview">{contentValue}</ReactMarkdown>
     </form>
   );
 };

@@ -8,19 +8,13 @@ const CreatePost = () => {
 
   const handlePostCreate = async (event) => {
     event.preventDefault();
-    console.log(event.target.tags.value)
-    let tagsArr;
-    if (event.target.tags.value) {
-      tagsArr = event.target.tags.value.split(',').map((t) => t.trim());
-    }
-    console.log(tagsArr);
 
     try {
       const response = await fetch('/api/posts', {
         body: JSON.stringify({
           subject: event.target.subject.value,
           content: event.target.content.value,
-          tags: tagsArr,
+          // tags: tagsArr,
         }),
         headers: {
           'Content-Type': 'application/json',

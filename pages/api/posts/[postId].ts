@@ -5,6 +5,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { postId } = req.query;
 
   if (req.method === 'PUT') {
+    console.log('PUT body', req.body)
     const {
       subject,
       content,

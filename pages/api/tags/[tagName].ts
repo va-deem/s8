@@ -8,7 +8,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
       const tags = await prisma.tag.findMany({
-        where: { name: tagName },
+        where: { name: { startsWith: tagName } },
       });
       if (tags.length) {
         res.json(tags);
