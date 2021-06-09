@@ -2,31 +2,76 @@ import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
 import { PostInterface } from '../../types';
 import Select from './select';
+import { useRouter } from 'next/router';
 
 type PostFormProps = {
-  submitForm: (event) => void;
+  handlePostCreate: (event) => void;
   postData?: PostInterface;
 };
 
-const PostForm = ({ submitForm, postData }: PostFormProps) => {
-  const [contentValue, setContentValue] = useState(postData?.content || '');
-  const [selectValue, setSelectValue] = useState('');
-  const [subjectValue, setSubjectValue] = useState('');
+const PostForm = ({ handlePostCreate, postData }: PostFormProps) => {
+  const router = useRouter();
+  const initialTags = postData ? postData.tags.map((tag) => tag.tag) : [];
+
+  const [content, setContent] = useState(postData?.content || '');
+  const [tags, setTags] = useState(initialTags);
+  const [subject, setSubject] = useState(postData?.subject || '');
 
   const handleContent = (e) => {
-    setContentValue(e.target.value);
+    setContent(e.target.value);
   };
 
   const handleSubject = (e) => {
-    setSubjectValue(e.target.value);
+    setSubject(e.target.value);
   };
 
-  const handleSelect = (a) => setSelectValue(a);
+  const handleSelect = (a) => setTags(a);
 
-  console.log(subjectValue, contentValue, selectValue);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(subject, content, tags);
+
+    if (postData && postData.id) {
+      const handlePostUpdate = async (formValues) => {
+        try {
+          const response = await fetch(`/api/posts/${postData.id}`, {
+            body: JSON.stringify(formValues),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'PUT',
+          });
+
+          if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.error);
+          } else {
+            alert('Post updated successfully!');
+            router.replace('/admin');
+          }
+        } catch (e) {
+          alert(e.message);
+        }
+      };
+
+      handlePostUpdate({
+        id: postData.id,
+        subject,
+        content,
+        tags,
+      });
+    } else {
+      handlePostCreate({
+        subject,
+        content,
+        tags,
+      });
+    }
+  };
 
   return (
-    <form onSubmit={submitForm} className="post-form">
+    <form onSubmit={handleSubmit} className="post-form">
       <label htmlFor="subject" className="post-form__label">
         Subject
       </label>
@@ -35,7 +80,7 @@ const PostForm = ({ submitForm, postData }: PostFormProps) => {
         id="subject"
         type="text"
         className="post-form__input"
-        value={postData?.subject || subjectValue}
+        value={subject}
         onChange={handleSubject}
         required
       />
@@ -44,7 +89,7 @@ const PostForm = ({ submitForm, postData }: PostFormProps) => {
         id="content"
         className="post-form__textarea"
         rows={7}
-        value={contentValue}
+        value={content}
         onChange={handleContent}
       />
 
@@ -57,7 +102,7 @@ const PostForm = ({ submitForm, postData }: PostFormProps) => {
         Save
       </button>
 
-      <ReactMarkdown className="preview">{contentValue}</ReactMarkdown>
+      <ReactMarkdown className="preview">{content}</ReactMarkdown>
     </form>
   );
 };

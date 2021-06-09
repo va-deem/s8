@@ -9,15 +9,14 @@ import { useRouter } from 'next/router';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import Tags from '../../components/tags';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await prisma.post.findMany({
     orderBy: {
       createdAt: 'desc',
     },
-    include: {
-      tags: true,
-    },
+    include: { tags: { include: { tag: true } } },
   });
   return {
     props: { data },
@@ -68,12 +67,15 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
             </tr>
           </thead>
           <tbody className="blogs-table__body">
-            {data.map(({ id, subject, createdAt }) => (
+            {data.map(({ id, subject, createdAt, tags }) => (
               <tr key={id}>
                 <td>
-                  <Link href={`/admin/posts/${id}`}>
-                    <a>{subject}</a>
-                  </Link>
+                  <>
+                    <Link href={`/admin/posts/${id}`}>
+                      <a>{subject}</a>
+                    </Link>
+                    <Tags tags={tags} />
+                  </>
                 </td>
                 <td>
                   <Date date={createdAt} />

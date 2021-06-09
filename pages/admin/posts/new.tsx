@@ -6,16 +6,11 @@ import { useRouter } from 'next/router';
 const CreatePost = () => {
   const router = useRouter();
 
-  const handlePostCreate = async (event) => {
-    event.preventDefault();
+  const handlePostCreate = async (formValues) => {
 
     try {
       const response = await fetch('/api/posts', {
-        body: JSON.stringify({
-          subject: event.target.subject.value,
-          content: event.target.content.value,
-          // tags: tagsArr,
-        }),
+        body: JSON.stringify(formValues),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -40,7 +35,7 @@ const CreatePost = () => {
         <title>{siteTitle}</title>
       </Head>
       <section>
-        <PostForm submitForm={handlePostCreate} />
+        <PostForm handlePostCreate={handlePostCreate} />
       </section>
     </Layout>
   );

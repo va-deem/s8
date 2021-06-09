@@ -9,7 +9,8 @@ type SelectProps = {
 
 const Select = ({ initialValues, handleSelect }: SelectProps) => {
   const [inputValue, setValue] = useState('');
-
+  // const [inputValues, setValues] = useState([]);
+  console.log('INPUTVALUE', inputValue);
   const handleInputChange = (value) => setValue(value);
 
   // TODO set types
@@ -25,6 +26,25 @@ const Select = ({ initialValues, handleSelect }: SelectProps) => {
     return fetch(`/api/tags/${inputValue}`).then((res) => res.json());
   };
 
+  // const createOption = (label: string) => ({
+  //   label,
+  //   value: label,
+  // });
+  //
+  // const handleKeyDown = (event: SyntheticKeyboardEvent<HTMLElement>) => {
+  //   if (!inputValue) return;
+  //   switch (event.key) {
+  //     case 'Enter':
+  //     case 'Tab':
+  //       console.group('Value Added');
+  //       console.log(inputValues);
+  //       console.groupEnd();
+  //       setValue('');
+  //       setValues([...inputValues, createOption(inputValue)]);
+  //       event.preventDefault();
+  //   }
+  // };
+
   return (
     <div className="multiselect">
       <AsyncCreatableSelect
@@ -34,8 +54,8 @@ const Select = ({ initialValues, handleSelect }: SelectProps) => {
         defaultValue={initialValues}
         getOptionLabel={(e) => e.name}
         getOptionValue={(e) => e.id}
-        getNewOptionData={(inputValue, optionLabel) => ({
-          label: optionLabel,
+        getNewOptionData={(inputValue) => ({
+          id: 100,
           name: inputValue,
           __isNew__: true,
         })}
@@ -43,6 +63,8 @@ const Select = ({ initialValues, handleSelect }: SelectProps) => {
         onInputChange={handleInputChange}
         onChange={handleChange}
         instanceId={'react-select-9090'}
+        // onKeyDown={handleKeyDown}
+        isCreatable
       />
     </div>
   );

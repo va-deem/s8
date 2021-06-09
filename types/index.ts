@@ -14,4 +14,6 @@ export interface TagInterface {
   name: string;
   tag?: { id: number; name: string };
   createdAt?: Date;
+  label?: string;
+  __isNew__?: boolean;
 }
