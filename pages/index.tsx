@@ -35,7 +35,7 @@ export default function Home({ data }: { data: PostInterface[] }) {
               <p className="post-list__date">
                 <Date date={createdAt} />
               </p>
-              <Tags tags={tags} />
+              <Tags tags={tags.map((t) => t.tag)} />
             </li>
           ))}
         </ul>

@@ -4,6 +4,12 @@ form {
     border: 1px solid #ececec;
     border-radius: 3px;
     font: inherit;
+
+    &:focus {
+      outline: none;
+      border: 1px solid #363636;
+      border-radius: 3px;
+    }
   }
 
   textarea {

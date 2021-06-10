@@ -1,72 +1,116 @@
-import React, { useState } from 'react';
-import AsyncCreatableSelect from 'react-select/async-creatable';
+import React, { useEffect, useRef, useState } from 'react';
 import { TagInterface } from '../../types';
+import Tags from '../tags';
+import cn from 'classnames';
 
 type SelectProps = {
-  initialValues: TagInterface[];
-  handleSelect: (a) => void;
+  tags: TagInterface[];
+  setTags: (a) => void;
 };
 
-const Select = ({ initialValues, handleSelect }: SelectProps) => {
+const Select = ({ tags, setTags }: SelectProps) => {
   const [inputValue, setValue] = useState('');
-  // const [inputValues, setValues] = useState([]);
-  console.log('INPUTVALUE', inputValue);
-  const handleInputChange = (value) => setValue(value);
+  const [tagItems, setTagItems] = useState([]);
+  const [dropdown, setDropdown] = useState(false);
+  const ref = useRef(null);
 
-  // TODO set types
-  const handleChange = (newValue: any, actionMeta: any) => {
-    console.group('Value Changed');
-    console.log(newValue);
-    handleSelect(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setDropdown(false);
+        setTagItems([]);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref]);
+
+  const onDropdownItemClick = (e) => {
+    const tagId = Number(e.target.dataset.id);
+
+    setTags((currentTags) => {
+      // If tag has id and is not prosent in tags - add it
+      if (tagId && !tags.some((t) => t.id === tagId)) {
+        const tagToAdd = tagItems.find((t) => t.id === tagId);
+        setDropdown(false);
+        setValue('');
+        return [...currentTags, tagToAdd];
+      }
+
+      // If tag is new and not present - add it
+      if (!tags.some((t) => t.name === inputValue)) {
+        setDropdown(false);
+        setValue('');
+        return [...currentTags, { name: inputValue, isNew: true }];
+      }
+      return currentTags;
+    });
   };
 
-  const loadOptions = () => {
-    return fetch(`/api/tags/${inputValue}`).then((res) => res.json());
+  const deleteTag = (e) => {
+    const tagName = e.target.closest('span').textContent;
+    setTags(tags.filter((t) => t.name !== tagName));
   };
 
-  // const createOption = (label: string) => ({
-  //   label,
-  //   value: label,
-  // });
-  //
-  // const handleKeyDown = (event: SyntheticKeyboardEvent<HTMLElement>) => {
-  //   if (!inputValue) return;
-  //   switch (event.key) {
-  //     case 'Enter':
-  //     case 'Tab':
-  //       console.group('Value Added');
-  //       console.log(inputValues);
-  //       console.groupEnd();
-  //       setValue('');
-  //       setValues([...inputValues, createOption(inputValue)]);
-  //       event.preventDefault();
-  //   }
-  // };
+  const dropdownTagItems = (tagItems) => {
+    const addTag = { name: `Add new tag '${inputValue}'` };
+    const mapped = tags.map((t) => t.name);
+    return [addTag, ...tagItems.filter(({ name }) => !mapped.includes(name))];
+  };
 
+  const renderDropdown = (data) => {
+    console.log(data);
+    return (
+      <div className="multiselect__dropdown">
+        <ul className="multiselect__list">
+          {data.map((item) => (
+            <li
+              className="multiselect__item"
+              data-kind="item"
+              data-id={item.id}
+              key={item.name}
+              onClick={onDropdownItemClick}
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const handleInputChange = async (e) => {
+    setValue(e.target.value);
+
+    const response = await fetch(`/api/tags/${inputValue}`);
+    if (response.ok) {
+      const data = await response.json();
+      setTagItems(data);
+      console.log('OPTIONS', data);
+    }
+
+    if (!dropdown) {
+      setDropdown(true);
+    }
+  };
+
+  console.log(tags);
   return (
-    <div className="multiselect">
-      <AsyncCreatableSelect
-        isMulti
-        cacheOptions
-        defaultOptions={initialValues}
-        defaultValue={initialValues}
-        getOptionLabel={(e) => e.name}
-        getOptionValue={(e) => e.id}
-        getNewOptionData={(inputValue) => ({
-          id: 100,
-          name: inputValue,
-          __isNew__: true,
-        })}
-        loadOptions={loadOptions}
-        onInputChange={handleInputChange}
-        onChange={handleChange}
-        instanceId={'react-select-9090'}
-        // onKeyDown={handleKeyDown}
-        isCreatable
-      />
-    </div>
+    <>
+      {tags ? <Tags tags={tags} deleteTag={deleteTag} /> : null}
+      <div className={cn('multiselect', { open: dropdown })} ref={ref}>
+        <input
+          type="text"
+          className="multiselect__input"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        {tagItems && renderDropdown(dropdownTagItems(tagItems))}
+      </div>
+    </>
   );
 };
 

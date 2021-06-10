@@ -74,7 +74,7 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
                     <Link href={`/admin/posts/${id}`}>
                       <a>{subject}</a>
                     </Link>
-                    <Tags tags={tags} />
+                    <Tags tags={tags.map((t) => t.tag)} />
                   </>
                 </td>
                 <td>

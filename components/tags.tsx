@@ -10,14 +10,14 @@ type TagProps = {
 
 const Tags = ({ tags, deleteTag }: TagProps) => {
   const renderTag = (tag) => (
-    <span key={tag.id} className="tag" data-id={tag.id}>
+    <span key={tag.name} className="tag" data-id={tag.id}>
       {tag.name}
       {deleteTag ? <FontAwesomeIcon icon={faTimesCircle} onClick={deleteTag} /> : null}
     </span>
   );
 
   if (tags.length > 0) {
-    return <>{tags.map(({ tag }) => renderTag(tag))}</>;
+    return <>{tags.map((tag) => renderTag(tag))}</>;
   }
   return null;
 };

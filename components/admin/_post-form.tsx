@@ -2,20 +2,18 @@ import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
 import { PostInterface } from '../../types';
 import Select from './select';
-import { useRouter } from 'next/router';
 
 type PostFormProps = {
-  handlePostCreate: (event) => void;
+  submitForm: (event) => void;
   postData?: PostInterface;
 };
 
-const PostForm = ({ handlePostCreate, postData }: PostFormProps) => {
-  const router = useRouter();
+const PostForm = ({ submitForm, postData }: PostFormProps) => {
   const initialTags = postData ? postData.tags.map((tag) => tag.tag) : [];
 
+  const [subject, setSubject] = useState(postData?.subject || '');
   const [content, setContent] = useState(postData?.content || '');
   const [tags, setTags] = useState(initialTags);
-  const [subject, setSubject] = useState(postData?.subject || '');
 
   const handleContent = (e) => {
     setContent(e.target.value);
@@ -25,49 +23,10 @@ const PostForm = ({ handlePostCreate, postData }: PostFormProps) => {
     setSubject(e.target.value);
   };
 
-  const handleSelect = (a) => setTags(a);
-
+  // Creates post if it is new and updates post if it exists
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(subject, content, tags);
-
-    if (postData && postData.id) {
-      const handlePostUpdate = async (formValues) => {
-        try {
-          const response = await fetch(`/api/posts/${postData.id}`, {
-            body: JSON.stringify(formValues),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            method: 'PUT',
-          });
-
-          if (!response.ok) {
-            const data = await response.json();
-            throw new Error(data.error);
-          } else {
-            alert('Post updated successfully!');
-            router.replace('/admin');
-          }
-        } catch (e) {
-          alert(e.message);
-        }
-      };
-
-      handlePostUpdate({
-        id: postData.id,
-        subject,
-        content,
-        tags,
-      });
-    } else {
-      handlePostCreate({
-        subject,
-        content,
-        tags,
-      });
-    }
+    submitForm({ content, tags, subject });
   };
 
   return (
@@ -96,7 +55,7 @@ const PostForm = ({ handlePostCreate, postData }: PostFormProps) => {
       <label htmlFor="react-select-9090" className="post-form__label">
         Tags
       </label>
-      <Select handleSelect={handleSelect} initialValues={postData?.tags.map((t) => t.tag)} />
+      <Select tags={tags} setTags={setTags} />
 
       <button type="submit" className="post-form__button">
         Save
@@ -106,5 +65,4 @@ const PostForm = ({ handlePostCreate, postData }: PostFormProps) => {
     </form>
   );
 };
-
 export default PostForm;

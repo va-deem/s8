@@ -1,33 +1,26 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
-import { TagInterface } from '../../../types';
+import { PostInterface } from '../../../types';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const postId = Number(req.query.postId);
 
   if (req.method === 'PUT') {
-    console.log('PUT body', req.body);
-    const {
-      subject,
-      content,
-      tags,
-    }: { subject: string; content: string; tags: TagInterface[] } = req.body;
+    const postData: PostInterface = req.body;
 
-    let tagsToSave;
-    if (tags.length) {
-      tagsToSave = tags.map((tag) => {
-        if (tag.__isNew__) {
-          return { tag: { create: { name: tag.name } } };
-        } else {
-          return {
-            tag: { connect: { id: tag.id } },
-          };
-        }
-      });
-    } else {
-      tagsToSave = [];
-    }
-    console.log('tagsOnSave', tagsToSave);
+    const postToUpdate = (postData: PostInterface) => {
+      let tagsToSave = [];
+
+      if (postData.tags.length) {
+        tagsToSave = postData.tags.map((tag) => {
+          return tag.isNew
+            ? { tag: { create: { name: tag.name } } }
+            : { tag: { connect: { id: tag.id } } };
+        });
+      }
+
+      return { ...postData, tags: { create: tagsToSave } };
+    };
 
     try {
       // Cascade delete doesn't work so using raw query
@@ -37,11 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const post = await prisma.post.update({
         where: { id: Number(postId) },
-        data: {
-          subject,
-          content,
-          tags: { create: tagsToSave },
-        },
+        data: postToUpdate(postData),
       });
 
       res.status(200).json({ post });
@@ -65,4 +54,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 };
+
 export default handler;

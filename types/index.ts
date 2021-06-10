@@ -10,10 +10,10 @@ export interface PostInterface {
 }
 
 export interface TagInterface {
-  id: number;
+  id?: number;
   name: string;
   tag?: { id: number; name: string };
   createdAt?: Date;
   label?: string;
-  __isNew__?: boolean;
+  isNew?: boolean;
 }

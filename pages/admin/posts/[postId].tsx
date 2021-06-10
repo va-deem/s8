@@ -21,18 +21,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const UpdatePost = ({ postData }: { postData: PostInterface }) => {
   const router = useRouter();
 
-  const handlePostUpdate = async (event) => {
-    event.preventDefault();
-
-    const htmlOutput = convertToHtml(event.target.content.value);
+  const handlePostUpdate = async (formValues) => {
+    formValues.contentHtml = convertToHtml(formValues.content);
 
     try {
       const response = await fetch(`/api/posts/${postData.id}`, {
-        body: JSON.stringify({
-          subject: event.target.subject.value,
-          content: event.target.content.value,
-          contentHtml: htmlOutput,
-        }),
+        body: JSON.stringify(formValues),
         headers: {
           'Content-Type': 'application/json',
         },
