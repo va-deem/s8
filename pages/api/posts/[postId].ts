@@ -23,9 +23,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
-      // Cascade delete doesn't work so using raw query
-      // https://github.com/prisma/prisma/issues/2810
-      // TODO: try plugin https://paljs.com/plugins/delete/
       await prisma.$executeRaw`DELETE FROM "TagsOnPosts" WHERE "TagsOnPosts"."postId"=${postId};`;
 
       const post = await prisma.post.update({
@@ -43,9 +40,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'DELETE') {
     try {
-      await prisma.post.delete({
-        where: { id: Number(postId) },
-      });
+      // await prisma.post.delete({
+      //   where: { id: Number(postId) },
+      // });
+      // Cascade delete isn't supported yet so use raw query
+      // https://github.com/prisma/prisma/issues/2810
+      await prisma.$executeRaw`DELETE FROM "Post" WHERE "Post"."id"=${postId};`;
       res.status(204).end();
     } catch (e) {
       res.status(500).json({ error: e.message });
