@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 
 @import "/styles/variables.scss";
 @import "/styles/admin.scss";
@@ -18,7 +19,7 @@ div#__next > div {
   color: $textColor;
   background-color: white;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   overflow: auto;
 }
@@ -103,7 +104,7 @@ img {
 
   .post-view__title {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2em;
     line-height: 1.2;
   }
 
@@ -118,4 +119,8 @@ img {
   }
 }
 
+main {
+  padding: 0;
+  overflow-y: auto;
+}
 

@@ -3,7 +3,7 @@
 .heading2Xl {
   margin: 1rem 0;
   border: 1px solid brown;
-  font-size: 2.5rem;
+  font-size: 2.5em;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.05rem;
@@ -11,7 +11,7 @@
 
 .headingXl {
   margin: 0 0 1rem 0;
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: 800;
   line-height: 1.3;
   letter-spacing: -0.05rem;
@@ -20,17 +20,16 @@
 .headingLg {
   margin: 1rem 0;
   border: 1px solid green;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   line-height: 1.4;
 }
 
 .headingMd {
   height: 100%;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   line-height: 1.5;
-  overflow-x: hidden;
-  overflow-y: auto;
-
+  padding: 2em;
+  margin: 1em 1em 1em 0;
 }
 
 .borderCircle {
@@ -44,6 +43,4 @@
 .padding1px {
   padding-top: 1px;
 }
-
-
 

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../layout.module.scss';
-import utilStyles from '../../styles/utils.module.scss';
+import styles from '/styles/layout.module.scss';
+import ustyles from '/styles/utils.module.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -37,7 +37,7 @@ export default function Layout({
             <Image
               priority
               src="/images/avatar.jpg"
-              className={utilStyles.borderCircle}
+              className={ustyles.borderCircle}
               height={108}
               width={108}
               alt={name}
@@ -64,14 +64,16 @@ export default function Layout({
       </aside>
 
       <main className={styles.contentBlock}>
-        <div>{children}</div>
-        {/*{!adminHome && (*/}
-        {/*  <div className={styles.backToHome}>*/}
-        {/*    <Link href="/admin">*/}
-        {/*      <a>← Back</a>*/}
-        {/*    </Link>*/}
-        {/*  </div>*/}
-        {/*)}*/}
+        <section className={`${ustyles.headingMd} ${ustyles.padding1px}`}>
+          <div>{children}</div>
+          {/*{!adminHome && (*/}
+          {/*  <div className={styles.backToHome}>*/}
+          {/*    <Link href="/admin">*/}
+          {/*      <a>← Back</a>*/}
+          {/*    </Link>*/}
+          {/*  </div>*/}
+          {/*)}*/}
+        </section>
       </main>
     </div>
   );

@@ -32,3 +32,14 @@ form {
     cursor: pointer;
   }
 }
+
+pre {
+  border: 1px solid lightgrey;
+  padding: 1em;
+  border-radius: .3em;
+}
+
+code {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.8em;
+}
