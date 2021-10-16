@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import ustyles from '/styles/utils.module.scss';
 import Link from 'next/link';
 import Date from '../components/date';
 import { GetStaticProps } from 'next';
@@ -25,7 +24,7 @@ export default function Home({ data }: { data: PostInterface[] }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={`${ustyles.headingMd} ${ustyles.padding1px}`}>
+      <section className="headingMd padding1px">
         <ul className="post-list">
           {data.map(({ id, subject, createdAt, tags }) => (
             <li className="post-list__item" key={id}>

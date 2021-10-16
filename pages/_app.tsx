@@ -3,6 +3,6 @@ import 'highlight.js/styles/github.css';
 
 import { AppProps } from 'next/app';
 
-export default function _app({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }

@@ -3,9 +3,9 @@ import prisma from '../../../lib/prisma';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(req.query);
-  const { tagName }: { tagName: string } = req.query;
+  const { tagName } = req.query;
 
-  if (req.method === 'GET') {
+  if (req.method === 'GET' && typeof tagName === 'string') {
     try {
       const tags = await prisma.tag.findMany({
         where: { name: { startsWith: tagName } },

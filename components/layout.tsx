@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '/styles/layout.module.scss';
-import utilStyles from '/styles/utils.module.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
@@ -31,7 +30,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
             <Image
               priority
               src="/images/avatar.jpg"
-              className={utilStyles.borderCircle}
+              className="borderCircle"
               height={108}
               width={108}
               alt={name}

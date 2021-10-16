@@ -87,6 +87,7 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
                       tabIndex={0}
                       className="fa-icons"
                       onClick={(e) => handlePostDelete(e, id)}
+                      onKeyDown={(e) => handlePostDelete(e, id)}
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />
                     </a>

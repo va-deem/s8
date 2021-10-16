@@ -1,7 +1,6 @@
 import Layout from '../../components/layout';
 import Head from 'next/head';
 import Date from '../../components/date';
-import ustyles from '/styles/utils.module.scss';
 import prisma from '../../lib/prisma';
 import { PostInterface } from '../../types';
 import { GetServerSideProps } from 'next';
@@ -25,7 +24,7 @@ export default function Post({ postData }: { postData: PostInterface }) {
       <Head>
         <title>{postData.subject}</title>
       </Head>
-      <section className={`${ustyles.headingMd} ${ustyles.padding1px}`}>
+      <section className="headingMd padding1px">
         <article className="post-view">
           <h1 className="post-view__title">{postData.subject}</h1>
           <div className="post-view__date">
