@@ -1,0 +1,63 @@
+.layout__container {
+  display: flex;
+  width: 100%;
+}
+
+.layout__back {
+  margin: 3rem 0 0;
+}
+
+.layout__menu {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  min-width: 160px;
+  max-width: 240px;
+  padding: 2em;
+  color: $menuTextColor;
+  background-color: $menuBackgroundColor;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(54, 54, 54, 0.60);
+  box-shadow: 0 3px 6px 0 rgba(54, 54, 54, 0.60);
+}
+
+.layout__content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+.layout__menu__avatar {
+  border-radius: 9999px;
+}
+
+.link {
+  margin-bottom: .7em;
+  color: $menuLinkColor;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-decoration: none;
+
+  &.auth {
+    color: $menuLinkColor;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: small;
+    text-decoration: none;
+  }
+
+
+  &:hover {
+    color: $menuLinkColorHover;
+    text-decoration: underline;
+  }
+}
+
+.noLink {
+  border: none;
+  color: #ffffff;
+  text-decoration: none;
+}

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '/styles/layout.module.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +15,7 @@ export default function Layout({
   adminHome?: boolean;
 }) {
   return (
-    <div className={styles.container}>
+    <div className="layout__container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="" />
@@ -30,13 +29,13 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <aside className={styles.sideBlock}>
+      <aside className="layout__menu">
         <Link href="/">
           <a>
             <Image
               priority
               src="/images/avatar.jpg"
-              className={styles.borderCircle}
+              className="layout__menu__avatar"
               height={108}
               width={108}
               alt={name}
@@ -53,7 +52,7 @@ export default function Layout({
             <a className="link">Dashboard</a>
           </Link>
         </p>
-        <p className="link-auth">
+        <p className="layout__menu__link-auth">
           <Link href="/">
             <a className="fa-icons with-text">
               <FontAwesomeIcon icon={faChevronCircleLeft} />
@@ -62,7 +61,7 @@ export default function Layout({
         </p>
       </aside>
 
-      <main className={styles.contentBlock}>
+      <main className="layout__content">
         <section className="headingMd padding1px">
           <div>{children}</div>
           {/*{!adminHome && (*/}

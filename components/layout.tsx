@@ -1,16 +1,15 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '/styles/layout.module.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const name = 'Vadim';
-export const siteTitle = 'Next.js Sample Website';
+export const siteTitle = 'S8 blog';
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
-    <div className={styles.container}>
+    <div className="layout__container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Learn how to build a personal website using Next.js" />
@@ -24,13 +23,13 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <aside className={styles.sideBlock}>
+      <aside className="layout__menu">
         <Link href="/">
           <a>
             <Image
               priority
               src="/images/avatar.jpg"
-              className="borderCircle"
+              className="layout__menu__avatar"
               height={108}
               width={108}
               alt={name}
@@ -48,7 +47,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         <Link href="/about">
           <a className="link">About</a>
         </Link>
-        <p className="link-auth">
+        <p className="layout__menu__link-auth">
           <Link href="/admin">
             <a className="fa-icons with-text">
               <FontAwesomeIcon icon={faChevronCircleRight} />
@@ -56,13 +55,13 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
           </Link>
         </p>
       </aside>
-      <main className={styles.contentBlock}>
+      <main className="layout__content">
         <>{children}</>
 
         {!home && (
-          <div className={styles.backToHome}>
+          <div className="layout__back">
             <Link href="/">
-              <a>← Back</a>
+              <a>&larr; Back</a>
             </Link>
           </div>
         )}

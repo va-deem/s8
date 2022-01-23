@@ -7,13 +7,13 @@
   }
 
   .post-form__input {
-    margin-bottom: 1em;
     width: 100%;
+    margin-bottom: 1em;
   }
 
   .post-form__textarea {
-    margin-top: 1em;
     width: 100%;
+    margin-top: 1em;
   }
 
   .post-form__button {
@@ -40,9 +40,9 @@
     .blogs-table__body {
 
       td:not(:first-child) {
+        padding: 0 .7em;
         text-align: center;
         white-space: nowrap;
-        padding: 0 .7em;
       }
     }
 
@@ -65,19 +65,19 @@
     display: flex;
     align-items: center;
 
+    color: inherit;
     svg {
       margin-right: .5em;
     }
-    color: inherit;
   }
 }
 
 $height: 2.1em;
 
 .multiselect {
-  width: 50%;
   position: relative;
   z-index: 10;
+  width: 50%;
 
   &.open {
     .multiselect__dropdown {
@@ -98,18 +98,18 @@ $height: 2.1em;
   }
 
   &__dropdown {
-    display: none;
     position: absolute;
-    background-color: white;
+    z-index: 1000;
+    right: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    max-height: $height * 4;
     border: 1px solid #ccc;
     border-radius: 5px;
-    left: 0;
-    right: 0;
-    max-height: $height * 4;
+    background-color: white;
     overflow-y: auto;
     box-shadow: 2px 3px 5px rgba(0,0,0,0.3);
-    z-index: 1000;
-    width: 100%;
   }
 
   &__list {
@@ -119,10 +119,10 @@ $height: 2.1em;
   }
 
   &__item {
-    height: $height;
-    padding: 0 1rem;
     display: flex;
     align-items: center;
+    height: $height;
+    padding: 0 1rem;
     border-bottom: 1px solid #ccc;
 
     &.selected {
@@ -139,4 +139,55 @@ $height: 2.1em;
       font-style: italic;
     }
   }
+}
+
+main {
+  padding: 0;
+  overflow-y: auto;
+}
+
+form {
+  input, textarea {
+    padding: .4em;
+    border: 1px solid #ececec;
+    border-radius: 3px;
+    font: inherit;
+
+    &:focus {
+      outline: none;
+      border: 1px solid #363636;
+      border-radius: 3px;
+    }
+  }
+
+  textarea {
+
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: .2em .4em;
+  margin-right: .3em;
+  border-radius: .5em;
+  background-color: #ececec;
+  font-size: 0.7em;
+
+  svg {
+    height: 1em;
+    margin-left: .2em;
+    cursor: pointer;
+  }
+}
+
+pre {
+  border: 1px solid lightgrey;
+  padding: 1em;
+  border-radius: .3em;
+}
+
+code {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.8em;
 }
