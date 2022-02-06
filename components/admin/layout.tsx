@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
-const name = 'Vadim';
 export const siteTitle = 'Admin section';
 
 export default function Layout({
@@ -15,7 +14,7 @@ export default function Layout({
   adminHome?: boolean;
 }) {
   return (
-    <div className="layout__container">
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="" />
@@ -38,7 +37,7 @@ export default function Layout({
               className="layout__menu__avatar"
               height={108}
               width={108}
-              alt={name}
+              alt="Avatar"
             />
           </a>
         </Link>
@@ -62,17 +61,10 @@ export default function Layout({
       </aside>
 
       <main className="layout__content">
-        <section className="headingMd padding1px">
+        <section>
           <div>{children}</div>
-          {/*{!adminHome && (*/}
-          {/*  <div className={styles.backToHome}>*/}
-          {/*    <Link href="/admin">*/}
-          {/*      <a>← Back</a>*/}
-          {/*    </Link>*/}
-          {/*  </div>*/}
-          {/*)}*/}
         </section>
       </main>
-    </div>
+    </>
   );
 }

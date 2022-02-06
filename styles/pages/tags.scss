@@ -1,0 +1,35 @@
+.tags {
+  padding: 1em 1.3em;
+
+  * {
+    margin-left: .2em;
+    margin-bottom: .5em;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: .2em .5em;
+  margin-right: .3em;
+  border-radius: .5em;
+  background-color: #d5ede6;
+  font-size: 0.8em;
+
+  svg {
+    height: 1em;
+    margin-left: .2em;
+    cursor: pointer;
+  }
+}
+
+.tag-selectable {
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+
+  &.tag-selectable--active {
+    background-color: #87ccb8;
+  }
+}

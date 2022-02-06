@@ -165,22 +165,6 @@ form {
   }
 }
 
-.tag {
-  display: inline-flex;
-  align-items: center;
-  padding: .2em .4em;
-  margin-right: .3em;
-  border-radius: .5em;
-  background-color: #ececec;
-  font-size: 0.7em;
-
-  svg {
-    height: 1em;
-    margin-left: .2em;
-    cursor: pointer;
-  }
-}
-
 pre {
   border: 1px solid lightgrey;
   padding: 1em;

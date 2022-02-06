@@ -1,35 +1,14 @@
-$contentBackgroundColor: #e6e6e6;
-$menuBackgroundColor: #363636;
+$bodyBgColor: #ffffff;
+$contentBgColor: #ebf4ec;
 
 $textColor: #363636;
 
-$menuTextColor: #e6e6e6;
-$menuLinkColor: #e6e6e6;
-$menuLinkColorHover: #e6e6e6;
+$menuTextColor: #333333;
+$menuLinkColor: #666666;
+$menuLinkColorHover: #333333;
 $buttonTextHover: #B25E8E;
 
 $inputBorder: #DBD8DB;
 $inputBorderHover: #2C7155;
 $inputText: #666666;
 $inputPlaceholder: #999999;
-
-/* BREAKPOINTS */
-$xs:     480px;
-$xs-min: $xs;
-$xs-max: $xs-min - 1;
-
-$sm:     768px;
-$sm-min: $sm;
-$sm-max: $sm-min - 1;
-
-$md:     1025px;
-$md-min: $md;
-$md-max: $md-min - 1;
-
-$lg:     1280px;
-$lg-min: $lg;
-$lg-max: $lg-min - 1;
-
-$xl:     1920px;
-$xl-min: $xl;
-$xl-max: $xl-min - 1;

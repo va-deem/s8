@@ -1,9 +1,11 @@
-import Layout from '../../components/layout';
 import Head from 'next/head';
+import { GetServerSideProps } from 'next';
+import Link from 'next/link';
+import Layout from '../../components/layout';
 import Date from '../../components/date';
 import prisma from '../../lib/prisma';
 import { PostInterface } from '../../types';
-import { GetServerSideProps } from 'next';
+import Menu from '../../components/menu';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
@@ -24,7 +26,8 @@ export default function Post({ postData }: { postData: PostInterface }) {
       <Head>
         <title>{postData.subject}</title>
       </Head>
-      <section className="headingMd padding1px">
+      <Menu />
+      <section>
         <article className="post-view">
           <h1 className="post-view__title">{postData.subject}</h1>
           <div className="post-view__date">
@@ -35,6 +38,11 @@ export default function Post({ postData }: { postData: PostInterface }) {
             className="post-view__content"
           />
         </article>
+        <div className="layout__back">
+          <Link href="/">
+            <a>&larr; Back</a>
+          </Link>
+        </div>
       </section>
     </Layout>
   );
