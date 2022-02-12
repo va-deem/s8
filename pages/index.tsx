@@ -61,7 +61,9 @@ export default function Home(props: IHomeProps) {
         <title>{siteTitle}</title>
       </Head>
       <Menu />
-      <PostList data={filteredData} />
+      <main className="content">
+        <PostList data={filteredData} />
+      </main>
       <aside className={'tags'}>
         <Tags tags={tags} selectTag={selectTag} selectedTags={selectedTags} />
       </aside>

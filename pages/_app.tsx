@@ -1,10 +1,8 @@
-import '../styles/normalize.scss';
+// import '../styles/normalize.scss';
 import '../styles/global.scss';
-import '../styles/layout.scss';
-import '../styles/pages/post.scss';
-import '../styles/pages/tags.scss';
+import '../styles/main.scss';
+import '../styles/admin.scss';
 
-import '../styles/admin/index.scss';
 import 'highlight.js/styles/github.css';
 
 import { AppProps } from 'next/app';

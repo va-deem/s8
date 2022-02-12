@@ -1,0 +1,160 @@
+.menu {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: $menuTextColor;
+
+  .menu__image-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-right: 1em;
+  }
+
+  .menu__avatar {
+    width: 40px;
+    height: 40px;
+    padding-right: 1em;
+    border-radius: 9999px;
+  }
+
+  .menu__text-links {
+    display: flex;
+    flex-direction: column;
+
+    .menu__link {
+      margin: 0;
+      border: none;
+      color: $text-primary-color;
+      text-decoration: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .menu__title {
+      margin: 0 0 .3em 0;
+      font-size: 1.2em;
+    }
+
+    .menu__slogan {
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+
+    .menu__image-wrapper {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 1em;
+    }
+
+    .menu__title {
+      text-align: center;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: auto;
+
+  .content__back {
+    margin: 20px 0 0;
+  }
+
+  .post-view {
+    .post-view__title {
+      padding-top: 2rem;
+      margin: 0;
+      font-size: 2em;
+      line-height: 1.2;
+    }
+
+    .post-view__date {
+      margin-top: .3em;
+      color: #666;
+      font-size: 0.8em;
+    }
+
+    .post-view__content {
+      margin-top: 1em;
+
+      img {
+        max-width: 100%;
+        margin: 1em 0;
+        border-radius: .3em;
+      }
+    }
+  }
+
+  .post-list {
+    padding: 0;
+    margin: 1rem 0 0;
+
+    .post-list__item {
+      margin-bottom: 1.5em;
+      list-style: none;
+
+      .post-list__title {
+      }
+
+      .post-list__details {
+        margin-bottom: .5em;
+        color: #666;
+        font-size: 0.8em;
+        vertical-align: baseline;
+
+        * {
+          font-size: inherit;
+        }
+
+        span:first-child {
+          margin-right: .5em;
+        }
+
+      }
+    }
+  }
+}
+
+.tags {
+  padding: 1em 1.3em;
+
+  * {
+    margin-bottom: .5em;
+    margin-left: .2em;
+  }
+}
+
+// Tag styles
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: .2em .5em;
+  margin-right: .3em;
+  border-radius: .5em;
+  background-color: #d5ede6;
+  font-size: 0.8em;
+
+  svg {
+    height: 1em;
+    margin-left: .2em;
+    cursor: pointer;
+  }
+
+  &.tag-selectable {
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    &.tag-selectable--active {
+      background-color: #87ccb8;
+    }
+  }
+}

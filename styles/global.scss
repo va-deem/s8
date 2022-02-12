@@ -4,20 +4,28 @@ html,
 body {
   width: 100%;
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  color: $textColor;
-  background-color: $bodyBgColor;
+  color: $text-primary-color;
+  background-color: $primary-color;
   font-family: 'Ubuntu', sans-serif;
+  font-size: $font-size;
+}
+
+body > * {
+  box-sizing: border-box;
 }
 
 #__next {
   display: grid;
   min-width: 400px;
   max-width: 1200px;
-
   margin: 0 auto;
+
+  background-color: $secondary-color;
   grid-template-columns: 1fr;
   grid-column-gap: 10px;
 }

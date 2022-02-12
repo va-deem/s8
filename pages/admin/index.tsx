@@ -51,13 +51,12 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
 
   return (
     <Layout adminHome>
-      <div>
-        <Link href="/admin/posts/new">
-          <a>Create a post</a>
-        </Link>
-      </div>
-
       <section className="blogs-section">
+        <div className="blogs_link-new">
+          <Link href="/admin/posts/new">
+            <a>Create a post</a>
+          </Link>
+        </div>
         <table className="blogs-table">
           <thead className="blogs-table__head">
             <tr>

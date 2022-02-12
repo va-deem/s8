@@ -50,9 +50,9 @@ const UpdatePost = ({ postData }: { postData: PostInterface }) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section>
+      <main className={'content'}>
         <PostForm submitForm={handlePostUpdate} postData={postData} />
-      </section>
+      </main>
     </Layout>
   );
 };

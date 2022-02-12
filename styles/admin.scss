@@ -1,5 +1,9 @@
+.admin-content {
+  padding: 1em;
+}
+
 .post-form {
-  width: 50%;
+  width: 100%;
 
   .post-form__label {
     display: block;
@@ -25,9 +29,12 @@
 .blogs-section {
   margin: 2em 0;
 
+  .blogs_link-new {
+    margin-bottom: 1em;
+  }
+
   .blogs-table {
-    width: 50%;
-    padding: 1em;
+    width: 100%;
 
     .blogs-table__head th {
       border-bottom: 1px solid gray;
