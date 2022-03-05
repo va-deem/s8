@@ -1,7 +1,7 @@
 .menu {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 1rem;
   color: $menuTextColor;
 
   .menu__image-wrapper {
@@ -81,14 +81,15 @@
       font-size: 0.8em;
     }
 
-    .post-view__content {
-      margin-top: 1em;
+  }
 
-      img {
-        max-width: 100%;
-        margin: 1em 0;
-        border-radius: .3em;
-      }
+  .post-view__content {
+    margin-top: 1em;
+
+    img {
+      max-width: 100%;
+      margin: 1em 0;
+      border-radius: .3em;
     }
   }
 
@@ -104,7 +105,7 @@
       }
 
       .post-list__details {
-        margin-bottom: .5em;
+        margin: .5rem 0 .5rem 0;
         color: #666;
         font-size: 0.8em;
         vertical-align: baseline;
@@ -135,11 +136,16 @@
 .tag {
   display: inline-flex;
   align-items: center;
+  line-height: 1.2;
   padding: .2em .5em;
   margin-right: .3em;
   border-radius: .5em;
-  background-color: #d5ede6;
+  background-color: hsl(163, 40%, 90%);
   font-size: 0.8em;
+
+  &:hover {
+    background-color: hsl(163, 40%, 85%);
+  }
 
   svg {
     height: 1em;
@@ -154,7 +160,8 @@
     user-select: none;
 
     &.tag-selectable--active {
-      background-color: #87ccb8;
+      background-color: hsl(163, 40%, 70%);
+      transition: background-color 0.4s ease;
     }
   }
 }
