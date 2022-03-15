@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint './pages/**/*.{ts,tsx}'",
     "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "migrate:deploy": "prisma migrate deploy",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -21,7 +23,6 @@
     "gray-matter": "^4.0.2",
     "highlight.js": "^11.1.0",
     "next": "^10.0.0",
-    "next-auth": "^4.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-markdown": "^6.0.2",

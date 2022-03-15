@@ -22,10 +22,10 @@ const Menu = () => {
       <div className={'menu__text-links'}>
         <Link href="/">
           <a className="menu__link">
-            <h1 className="menu__title">S8 Blog</h1>
+            <h1 className="menu__title">Blog</h1>
           </a>
         </Link>
-        <p className={'menu__slogan'}>Just another developer&apos;s blog</p>
+        <p className={'menu__slogan'}>A developer&apos;s blog</p>
       </div>
     </aside>
   );

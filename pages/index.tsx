@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import prisma from '../lib/prisma';
 import Layout, { siteTitle } from '../components/layout';
 import { PostInterface, TagInterface } from '../types';
@@ -9,7 +9,7 @@ import PostList from '../components/postList';
 import Menu from '../components/menu';
 import checkCommonTags from '../utils/checkCommonTags';
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const data = await prisma.post.findMany({
     orderBy: { createdAt: 'desc' },
     include: { tags: { include: { tag: true } } },

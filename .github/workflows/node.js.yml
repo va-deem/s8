@@ -1,0 +1,28 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: touch .env
+      - run: echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+      - run: cat .env
+      - run: yarn install
+      - run: yarn build
+      - run: pm2 reload s8
+        env:
+          CI: true

@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+export const siteTitle = 'S8 blog admin';
+
 export default function Layout({
   children,
   adminHome,

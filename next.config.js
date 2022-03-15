@@ -8,4 +8,7 @@ module.exports = {
     includePaths: [path.join(__dirname, 'styles')],
     prependData: `@import "variables.scss";`,
   },
+  env: {
+    DATABASE_URL: process.env.DATABASE_URL,
+  },
 };
