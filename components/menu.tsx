@@ -25,7 +25,7 @@ const Menu = () => {
             <h1 className="menu__title">Blog</h1>
           </a>
         </Link>
-        <p className={'menu__slogan'}>A developer&apos;s blog</p>
+        <p className={'menu__slogan'}>My developer&apos;s blog</p>
       </div>
     </aside>
   );
