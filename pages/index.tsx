@@ -45,8 +45,9 @@ export default function Home(props: IHomeProps) {
     }
   }, [data, selectedTags]);
 
-  const selectTag = (e) => {
-    const tagName = e.target.textContent;
+  const selectTag = (e: React.MouseEvent | React.KeyboardEvent) => {
+    const tag = e.target as HTMLElement;
+    const tagName = tag.textContent;
 
     if (selectedTags.includes(tagName)) {
       setSelectedTags((selectedTags) => selectedTags.filter((name) => name !== tagName));
