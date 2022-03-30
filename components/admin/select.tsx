@@ -32,7 +32,7 @@ const Select = ({ tags, setTags }: SelectProps) => {
     const tagId = Number(e.target.dataset.id);
 
     setTags((currentTags) => {
-      // If tag has id and is not prosent in tags - add it
+      // If tag has id and is not present in tags - add it
       if (tagId && !tags.some((t) => t.id === tagId)) {
         const tagToAdd = tagItems.find((t) => t.id === tagId);
         setDropdown(false);
@@ -50,8 +50,9 @@ const Select = ({ tags, setTags }: SelectProps) => {
     });
   };
 
-  const deleteTag = (e) => {
-    const tagName = e.target.closest('span').textContent;
+  const deleteTag = (e: React.MouseEvent) => {
+    const tag = e.target as HTMLElement;
+    const tagName = tag.closest('span').textContent;
     setTags(tags.filter((t) => t.name !== tagName));
   };
 

@@ -1,29 +1,22 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { TagInterface } from '../types';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 type TagProps = {
   tags: TagInterface[];
-  deleteTag?: MouseEventHandler<SVGSVGElement>;
-  selectTag?: MouseEventHandler;
+  deleteTag?: (e: React.MouseEvent) => void;
+  selectTag?: (e: React.MouseEvent | React.KeyboardEvent) => void;
   selectedTags?: string[];
 };
 
 const Tags = ({ tags, deleteTag, selectTag, selectedTags }: TagProps) => {
-  const isSelected = (tagName) => {
-    if (!selectedTags) return false;
-
-    if (selectedTags.includes(tagName)) {
-      return true;
-    }
-  };
-
+  const isSelected = (tagName) => selectedTags?.includes(tagName);
   const renderTag = (tag) => (
     <span
       key={tag.name}
-      className={classNames(
+      className={cn(
         'tag',
         { 'tag-selectable': !!selectTag },
         {
@@ -32,6 +25,9 @@ const Tags = ({ tags, deleteTag, selectTag, selectedTags }: TagProps) => {
       )}
       data-id={tag.id}
       onClick={selectTag}
+      onKeyPress={selectTag}
+      role="button"
+      tabIndex={0}
     >
       {tag.name}
       {deleteTag ? <FontAwesomeIcon icon={faTimesCircle} onClick={deleteTag} /> : null}
