@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
 html,
 body {
@@ -11,8 +11,8 @@ body {
 body {
   color: $text-primary-color;
   background-color: $primary-color;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: $font-size;
+  font-family: 'PT Sans', sans-serif;
+  font-size: $font-size-normal;
 }
 
 body > * {
@@ -22,7 +22,7 @@ body > * {
 #__next {
   display: grid;
   min-width: 400px;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 
   background-color: $secondary-color;

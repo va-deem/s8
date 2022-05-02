@@ -63,7 +63,6 @@ const Select = ({ tags, setTags }: SelectProps) => {
   };
 
   const renderDropdown = (data) => {
-    console.log(data);
     return (
       <div className="multiselect__dropdown">
         <ul className="multiselect__list">
@@ -90,7 +89,6 @@ const Select = ({ tags, setTags }: SelectProps) => {
     if (response.ok) {
       const data = await response.json();
       setTagItems(data);
-      console.log('OPTIONS', data);
     }
 
     if (!dropdown) {
@@ -98,7 +96,6 @@ const Select = ({ tags, setTags }: SelectProps) => {
     }
   };
 
-  console.log(tags);
   return (
     <>
       {tags ? <Tags tags={tags} deleteTag={deleteTag} /> : null}

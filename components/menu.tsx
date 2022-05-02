@@ -12,9 +12,9 @@ const Menu = () => {
               priority
               src="/images/avatar.jpg"
               className="menu__avatar"
-              height={108}
-              width={108}
-              alt={'Avatar'}
+              height={80}
+              width={80}
+              alt="Avatar"
             />
           </div>
         </a>

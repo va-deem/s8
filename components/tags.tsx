@@ -19,9 +19,7 @@ const Tags = ({ tags, deleteTag, selectTag, selectedTags }: TagProps) => {
       className={cn(
         'tag',
         { 'tag-selectable': !!selectTag },
-        {
-          'tag-selectable--active': isSelected(tag.name),
-        }
+        { 'tag-selectable--active': isSelected(tag.name) }
       )}
       data-id={tag.id}
       onClick={selectTag}
