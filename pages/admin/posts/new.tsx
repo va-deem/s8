@@ -3,6 +3,7 @@ import Layout, { siteTitle } from '../../../components/admin/layout';
 import PostForm from '../../../components/admin/_post-form';
 import { useRouter } from 'next/router';
 import convertToHtml from '../../../lib/mdToHtml';
+import { createPost } from '../../../services/blogService';
 
 const CreatePost = () => {
   const router = useRouter();
@@ -11,23 +12,11 @@ const CreatePost = () => {
     formValues.contentHtml = convertToHtml(formValues.content);
 
     try {
-      const response = await fetch('/api/posts', {
-        body: JSON.stringify(formValues),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error);
-      } else {
-        alert('Post created successfully!');
-        router.replace('/admin');
-      }
+      await createPost(formValues);
+      alert('Post created successfully!');
+      router.replace('/admin');
     } catch (e) {
-      alert(e.message);
+      alert(e.response.status);
     }
   };
 

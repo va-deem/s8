@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Tags from '../../components/tags';
+import { deletePost } from '../../services/blogService';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await prisma.post.findMany({
@@ -33,19 +34,11 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
     if (!answer) return;
 
     try {
-      const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error);
-      } else {
-        alert('Post deleted successfully!');
-        router.replace('/admin');
-      }
+      await deletePost(id);
+      alert('Post deleted successfully!');
+      router.replace('/admin');
     } catch (e) {
-      alert(e.message);
+      alert(e.response.status);
     }
   };
 

@@ -10,9 +10,7 @@ import PostView from '../../components/postView';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
     where: { id: Number(params.id) },
-    include: {
-      tags: true,
-    },
+    include: { tags: { include: { tag: true } } },
   });
 
   return {

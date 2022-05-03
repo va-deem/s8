@@ -6,6 +6,7 @@ import prisma from '../../../lib/prisma';
 import { PostInterface } from '../../../types';
 import { useRouter } from 'next/router';
 import convertToHtml from '../../../lib/mdToHtml';
+import { updatePost } from '../../../services/blogService';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
@@ -25,23 +26,11 @@ const UpdatePost = ({ postData }: { postData: PostInterface }) => {
     formValues.contentHtml = convertToHtml(formValues.content);
 
     try {
-      const response = await fetch(`/api/posts/${postData.id}`, {
-        body: JSON.stringify(formValues),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'PUT',
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error);
-      } else {
-        alert('Post updated successfully!');
-        router.replace(`/posts/${postData.id}`);
-      }
+      const response = await updatePost(postData.id, formValues);
+      alert('Post updated successfully!');
+      router.replace(`/posts/${response.data.post.id}`);
     } catch (e) {
-      alert(e.message);
+      alert(e.response.status);
     }
   };
 

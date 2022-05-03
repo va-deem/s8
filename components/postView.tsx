@@ -1,18 +1,23 @@
 import React from 'react';
 import Date from './date';
 import { PostInterface } from '../types';
+import Tags from './tags';
 
-const PostView = ({ postData }: { postData: PostInterface }) => {
+interface IPostViewProps {
+  postData: PostInterface;
+}
+
+const PostView = (props: IPostViewProps) => {
+  const { subject, createdAt, tags, contentHtml } = props.postData;
+
   return (
     <>
-      <h1 className="post-view__title">{postData.subject}</h1>
-      <div className="post-view__date">
-        <Date date={postData.createdAt} />
-      </div>
-      <div
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        className="post-view__content"
-      />
+      <h1 className="post-view__title">{subject}</h1>
+      <p className="post-view__details">
+        <Date date={createdAt} />
+        <Tags tags={tags.map((t) => t.tag)} />
+      </p>
+      <div dangerouslySetInnerHTML={{ __html: contentHtml }} className="post-view__content" />
     </>
   );
 };

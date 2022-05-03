@@ -1,13 +1,15 @@
 .menu {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem 1rem 1rem;
   color: $menuTextColor;
 
   .menu__image-wrapper {
-    width: 50px;
-    height: 50px;
-    margin-right: 1em;
+    margin: 0 1rem 1rem 0;
+
+    @media (min-width: 768px) {
+      margin: 0;
+    }
   }
 
   .menu__avatar {
@@ -22,7 +24,7 @@
     flex-direction: column;
 
     .menu__link {
-      margin: 0;
+      margin: 0 1rem 0 0;
       border: none;
       color: $text-primary-color;
       text-decoration: none;
@@ -33,7 +35,7 @@
 
     .menu__title {
       margin: 0 0 .3em 0;
-      font-size: 1.2em;
+      font-size: $font-size-title;
     }
 
     .menu__slogan {
@@ -46,8 +48,6 @@
     flex-direction: column;
 
     .menu__image-wrapper {
-      width: 100px;
-      height: 100px;
       margin-bottom: 1em;
     }
 
@@ -60,31 +60,39 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: .5rem 1rem 1rem;
   overflow: auto;
 
   .content__back {
-    margin: 20px 0 0;
+    font-size: $font-size-small;
+    margin-bottom: 1rem;
   }
 
-  .post-view {
-    .post-view__title {
-      padding-top: 2rem;
-      margin: 0;
-      font-size: 2em;
-      line-height: 1.2;
-    }
+  .post-view__title {
+    max-width: 24em;
+    padding: 0;
+    margin: 0;
+    font-size: $font-size-title;
+    line-height: 1.2;
+  }
 
-    .post-view__date {
-      margin-top: .3em;
-      color: #666;
-      font-size: 0.8em;
-    }
+  .post-view__details {
+    margin-top: .4em;
+    color: #666;
+    font-size: $font-size-small;
+    vertical-align: baseline;
 
+    span:first-child {
+      margin-right: .5em;
+    }
   }
 
   .post-view__content {
     margin-top: 1em;
+
+    p {
+      max-width: 35em;
+    }
 
     img {
       max-width: 100%;
@@ -102,12 +110,16 @@
       list-style: none;
 
       .post-list__title {
+        text-decoration: none;
+        font-weight: 700;
+        font-size: $font-size-bigger;
+        color: $text-primary-color;
       }
 
       .post-list__details {
-        margin: .5rem 0 .5rem 0;
+        margin-top: .4em;
         color: #666;
-        font-size: 0.8em;
+        font-size: $font-size-small;
         vertical-align: baseline;
 
         * {
@@ -121,6 +133,10 @@
       }
     }
   }
+
+  @media (min-width: 768px) {
+    padding-top: 2rem;
+  }
 }
 
 .tags {
@@ -132,7 +148,6 @@
   }
 }
 
-// Tag styles
 .tag {
   display: inline-flex;
   align-items: center;
@@ -141,7 +156,7 @@
   margin-right: .3em;
   border-radius: .5em;
   background-color: hsl(163, 40%, 90%);
-  font-size: 0.8em;
+  font-size: $font-size-small;
 
   &:hover {
     background-color: hsl(163, 40%, 85%);
