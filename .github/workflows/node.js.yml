@@ -24,6 +24,8 @@ jobs:
       - run: touch .env
       - run: echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
       - run: echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env
+      - run: echo AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }} >> .env
+      - run: echo AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }} >> .env
       - run: cat .env
       - run: yarn install
       - run: yarn build
