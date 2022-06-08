@@ -66,6 +66,8 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
             </>
           )}
         </div>
+        <div>The value of DATABASE_URL is: {process.env.DATABASE_URL}</div>
+        <div>The value of NEXTAUTH_URL is: {process.env.NEXTAUTH_URL}</div>
         <table className="blogs-table">
           <thead className="blogs-table__head">
             <tr>

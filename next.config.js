@@ -9,6 +9,6 @@ module.exports = {
     prependData: `@import "variables.scss";`,
   },
   env: {
-    DATABASE_URL: process.env.DATABASE_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 };
