@@ -1,4 +1,4 @@
-name: CI
+name: QQCH
 
 on:
   push:
@@ -23,6 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: touch .env
       - run: echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+      - run: echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env
       - run: cat .env
       - run: yarn install
       - run: yarn build
