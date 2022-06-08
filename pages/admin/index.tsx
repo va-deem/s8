@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Tags from '../../components/tags';
 import { deletePost } from '../../services/blogService';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await prisma.post.findMany({
@@ -42,6 +43,8 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
     }
   };
 
+  const { data: session } = useSession();
+
   return (
     <Layout adminHome>
       <section className="blogs-section">
@@ -49,6 +52,19 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
           <Link href="/admin/posts/new">
             <a>Create a post</a>
           </Link>
+        </div>
+        <div>
+          {session ? (
+            <>
+              Signed in as {session.user.email} <br />
+              <button onClick={() => signOut()}>Sign out</button>
+            </>
+          ) : (
+            <>
+              Not signed in <br />
+              <button onClick={() => signIn()}>Sign in</button>
+            </>
+          )}
         </div>
         <table className="blogs-table">
           <thead className="blogs-table__head">
