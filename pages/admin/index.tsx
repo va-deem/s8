@@ -1,15 +1,15 @@
-import React from 'react';
 import Link from 'next/link';
-import Layout from '../../components/admin/layout';
+import styles from '/styles/admin/adminIndexPage.module.scss';
+import AdminLayout from '../../components/admin/adminLayout';
 import { GetServerSideProps } from 'next';
 import prisma from '../../lib/prisma';
 import { PostInterface } from '../../types';
-import Date from '../../components/date';
+import Date from '../../components/Date/Date';
 import { useRouter } from 'next/router';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import Tags from '../../components/tags';
+import Tags from '../../components/Tags/Tags';
 import { deletePost } from '../../services/blogService';
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -43,22 +43,22 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
   };
 
   return (
-    <Layout adminHome>
-      <section className="blogs-section">
-        <div className="blogs_link-new">
+    <AdminLayout adminHome>
+      <section className={styles.section}>
+        <div className={styles.newLink}>
           <Link href="/admin/posts/new">
             <a>Create a post</a>
           </Link>
         </div>
-        <table className="blogs-table">
-          <thead className="blogs-table__head">
+        <table className={styles.table}>
+          <thead className={styles.tableHead}>
             <tr>
               <th>Subject</th>
               <th>Date and time</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody className="blogs-table__body">
+          <tbody className={styles.tableBody}>
             {data.map(({ id, subject, createdAt, tags }) => (
               <tr key={id}>
                 <td>
@@ -77,7 +77,7 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
                     <a
                       role="button"
                       tabIndex={0}
-                      className="fa-icons"
+                      className={styles['fa-icons']}
                       onClick={(e) => handlePostDelete(e, id)}
                       onKeyDown={(e) => handlePostDelete(e, id)}
                     >
@@ -86,7 +86,7 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
                   </Link>
 
                   <Link href={`/posts/${id}`}>
-                    <a className="fa-icons">
+                    <a className={styles['fa-icons']}>
                       <FontAwesomeIcon icon={faEye} />
                     </a>
                   </Link>
@@ -96,7 +96,7 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
           </tbody>
         </table>
       </section>
-    </Layout>
+    </AdminLayout>
   );
 };
 

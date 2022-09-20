@@ -1,0 +1,72 @@
+@import '../../styles/variables';
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  box-shadow: -1px 2px 30px -10px rgba(51, 51, 51, 0.1);
+
+  .logo {
+    padding-bottom: .5rem;
+
+    .logoText {
+      font-family: 'Londrina Shadow', cursive;
+      font-size: 52px;
+      position: relative;
+
+      @media (min-width: 768px) {
+        font-size: 76px;
+      }
+
+      .logoSlogan {
+        font-family: $font-family-regular;
+        font-size: $font-size-small;
+        position: absolute;
+        right: 0;
+        bottom: -6px;
+
+        @media (min-width: 768px) {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-content: center;
+
+    .toggleBtn {
+      display: block;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    .items {
+      display: none;
+      align-items: center;
+      list-style: none;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
+
+      .item {
+        display: flex;
+        cursor: pointer;
+
+        .itemIcon {
+          margin-right: .5em;
+        }
+
+        .itemText {
+          margin: 0 2em 0 .5em;
+        }
+      }
+    }
+  }
+}

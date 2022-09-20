@@ -1,10 +1,12 @@
-$font-size-small: 0.75rem;
+$font-size-tiny: 0.75rem;
+$font-size-small: 0.875rem;
 $font-size-normal: 1rem;
 $font-size-bigger: 1.25rem;
 $font-size-title: 1.5rem;
 $font-size-big: 1.875rem;
+$font-size-biggest: 2.25rem;
 
-$primary-color: #f6f6f6;
+$primary-color: #ffffff;
 $secondary-color: #ffffff;
 
 $text-primary-color: #363636;
@@ -18,3 +20,7 @@ $inputBorder: #DBD8DB;
 $inputBorderHover: #2C7155;
 $inputText: #666666;
 $inputPlaceholder: #999999;
+
+$font-family-regular: 'Fira Sans', serif;
+$font-family-code: 'Ubuntu Mono', monospace;
+$font-family-headers: 'Roboto', serif;

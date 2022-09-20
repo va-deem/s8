@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import styles from '/styles/admin/select.module.scss';
 import { TagInterface } from '../../types';
-import Tags from '../tags';
-import cn from 'classnames';
+import Tags from '../Tags/Tags';
+import cx from 'clsx';
 
 type SelectProps = {
   tags: TagInterface[];
@@ -64,11 +65,11 @@ const Select = ({ tags, setTags }: SelectProps) => {
 
   const renderDropdown = (data) => {
     return (
-      <div className="multiselect__dropdown">
-        <ul className="multiselect__list">
+      <div className={styles.multiselect__dropdown}>
+        <ul className={styles.multiselect__list}>
           {data.map((item) => (
             <li
-              className="multiselect__item"
+              className={styles.multiselect__item}
               data-kind="item"
               data-id={item.id}
               key={item.name}
@@ -99,7 +100,10 @@ const Select = ({ tags, setTags }: SelectProps) => {
   return (
     <>
       {tags ? <Tags tags={tags} deleteTag={deleteTag} /> : null}
-      <div className={cn('multiselect', { open: dropdown })} ref={ref}>
+      <div
+        className={cx(styles.multiselect, { [styles.open]: dropdown })}
+        ref={ref}
+      >
         <input
           type="text"
           className="multiselect__input"

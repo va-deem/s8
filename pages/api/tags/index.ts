@@ -1,17 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma';
+import { disconnectDb, getTags } from '../../../services/dbService';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
-      const tags = await prisma.tag.findMany();
+      const tags = await getTags();
       res.json(tags);
     } catch (e) {
       res.status(500).json({ error: e.message });
     } finally {
-      await prisma.$disconnect();
+      await disconnectDb();
     }
   }
 };
-
-export default handler;

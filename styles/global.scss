@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+@import "fonts";
+@import 'variables';
 
 html,
 body {
@@ -11,8 +12,9 @@ body {
 body {
   color: $text-primary-color;
   background-color: $primary-color;
-  font-family: 'PT Sans', sans-serif;
+  font-family: $font-family-regular;
   font-size: $font-size-normal;
+
 }
 
 body > * {
@@ -22,7 +24,7 @@ body > * {
 #__next {
   display: grid;
   min-width: 400px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 
   background-color: $secondary-color;
@@ -30,17 +32,34 @@ body > * {
   grid-column-gap: 10px;
 }
 
+pre {
+  //border: 1px solid #f2f2f2;
+  padding: .5em;
+  //border-radius: .3em;
+}
+
+code {
+  font-family: $font-family-code;
+  font-size: $font-size-small;
+}
+
 
 @media (min-width: 768px) {
   #__next {
     height: 100vh;
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 20% 1fr 20%;
     grid-template-rows: min-content 1fr;
     grid-column-gap: 10px;
 
+    header {
+      grid-row-start: 1;
+      grid-column-start: 1;
+      grid-column-end: span 3;
+    }
+
     & > main {
       grid-column-start: 2;
-      grid-row-start: 1;
+      grid-row-start: 2;
       grid-row-end: span 2;
     }
   }

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../../../components/admin/layout';
+import AdminLayout, { siteTitle } from '../../../components/admin/adminLayout';
 import PostForm from '../../../components/admin/_post-form';
 import { GetServerSideProps } from 'next';
 import prisma from '../../../lib/prisma';
@@ -7,6 +7,7 @@ import { PostInterface } from '../../../types';
 import { useRouter } from 'next/router';
 import convertToHtml from '../../../lib/mdToHtml';
 import { updatePost } from '../../../services/blogService';
+import styles from '/styles/admin/updatePost.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postData = await prisma.post.findUnique({
@@ -35,14 +36,14 @@ const UpdatePost = ({ postData }: { postData: PostInterface }) => {
   };
 
   return (
-    <Layout>
+    <AdminLayout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <main className={'content'}>
+      <main className={styles.content}>
         <PostForm submitForm={handlePostUpdate} postData={postData} />
       </main>
-    </Layout>
+    </AdminLayout>
   );
 };
 
