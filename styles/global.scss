@@ -24,18 +24,19 @@ body > * {
 #__next {
   display: grid;
   min-width: 400px;
-  max-width: 1200px;
   margin: 0 auto;
 
-  background-color: $secondary-color;
+
   grid-template-columns: 1fr;
-  grid-column-gap: 10px;
+
+  header {
+    background-color: $secondary-color;
+    margin-bottom: 1rem;
+  }
 }
 
 pre {
-  //border: 1px solid #f2f2f2;
   padding: .5em;
-  //border-radius: .3em;
 }
 
 code {
@@ -44,17 +45,17 @@ code {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: $sm) {
   #__next {
     height: 100vh;
-    grid-template-columns: 20% 1fr 20%;
+    grid-template-columns: 20% 1fr;
     grid-template-rows: min-content 1fr;
-    grid-column-gap: 10px;
 
     header {
       grid-row-start: 1;
       grid-column-start: 1;
       grid-column-end: span 3;
+      margin-bottom: 0;
     }
 
     & > main {

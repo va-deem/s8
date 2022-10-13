@@ -3,6 +3,7 @@
   src: url('../fonts/Londrina_Shadow/LondrinaShadow-Regular.ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -10,6 +11,7 @@
   src: url('../fonts/Fira_Sans/FiraSans-Regular.ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,11 +19,5 @@
   src: url('../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf');
   font-weight: normal;
   font-style: normal;
-}
-
-@font-face {
-  font-family: "Lalezar";
-  src: url('../fonts/Lalezar/Lalezar-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
+  font-display: swap;
 }

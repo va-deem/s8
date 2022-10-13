@@ -13,9 +13,8 @@
       font-size: $font-size-normal;
       font-family: $font-family-regular;
       color: $text-primary-color;
-      background-color: $primary-color;
 
-      @media (min-width: 768px) {
+      @media (min-width: $sm) {
         font-size: $font-size-normal;
         font-weight: 700;
       }

@@ -4,7 +4,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: .5rem 1rem 1rem;
+  padding: 0 0 1rem 1rem;
   overflow: auto;
 
   .content__back {
@@ -78,7 +78,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: $sm) {
     padding-top: 2rem;
   }
 }

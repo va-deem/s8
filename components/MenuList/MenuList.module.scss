@@ -1,0 +1,68 @@
+@import '../../styles/variables';
+
+.menuList {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: $secondary-color;
+  transform: translateX(100%);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: transform .5s ease, opacity .5s ease;
+
+  &.active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform .5s ease, opacity .5s ease;
+  }
+
+  @media (min-width: $sm) {
+    display: flex;
+    position: static;
+    width: initial;
+    height: initial;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 0;
+
+    @media (min-width: $sm) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .item {
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: $sm) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.item {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 0;
+
+  .itemIcon {
+    margin-right: .5em;
+  }
+
+  .itemText {
+    margin: 0 2em 0 .5em;
+  }
+}
