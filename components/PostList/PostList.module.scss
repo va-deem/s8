@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+
+.list {
+  padding: 0;
+  margin: 0;
+
+  .item {
+    margin-bottom: 1.5em;
+    list-style: none;
+
+    .title {
+      text-decoration: none;
+      font-size: $font-size-normal;
+      font-family: $font-family-regular;
+      color: $text-primary-color;
+
+      @media (min-width: $sm) {
+        font-size: $font-size-normal;
+        font-weight: 700;
+      }
+    }
+
+    .details {
+      margin-top: .4em;
+      color: #666;
+      font-size: $font-size-small;
+      vertical-align: baseline;
+
+      * {
+        font-size: inherit;
+      }
+
+      span:first-child {
+        margin-right: .5em;
+      }
+
+    }
+  }
+}

@@ -1,28 +1,28 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
-import Layout from '../../components/layout';
-import prisma from '../../lib/prisma';
+import LayoutMain from '../../components/LayoutMain/LayoutMain';
 import { PostInterface } from '../../types';
-import Menu from '../../components/menu';
-import PostView from '../../components/postView';
+import Menu from '../../components/Menu/Menu';
+import PostView from '../../components/PostView/PostView';
+import { getPost } from '../../services/dbService';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const postData = await prisma.post.findUnique({
-    where: { id: Number(params.id) },
-    include: { tags: { include: { tag: true } } },
-  });
-
-  return {
-    props: { postData },
-  };
+  try {
+    const post = await getPost(params.id);
+    return {
+      props: { post },
+    };
+  } catch (e) {
+    console.log(e);
+  }
 };
 
-export default function Post({ postData }: { postData: PostInterface }) {
+export default function Post({ post }: { post: PostInterface }) {
   return (
-    <Layout>
+    <LayoutMain>
       <Head>
-        <title>{postData.subject}</title>
+        <title>{post.subject}</title>
       </Head>
       <Menu />
       <main className="content">
@@ -31,8 +31,8 @@ export default function Post({ postData }: { postData: PostInterface }) {
             <a>&larr; Recent posts</a>
           </Link>
         </div>
-        <PostView postData={postData} />
+        <PostView postData={post} />
       </main>
-    </Layout>
+    </LayoutMain>
   );
 }

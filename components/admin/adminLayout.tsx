@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import styles from '/styles/admin/adminLayout.module.scss';
 
 export const siteTitle = 'S8 blog admin';
 
-export default function Layout({
+export default function AdminLayout({
   children,
   adminHome,
 }: {
@@ -16,7 +17,7 @@ export default function Layout({
         <meta name="description" content="A personal website with Next.js" />
         <meta name="og:title" content="Admin section" />
       </Head>
-      <main className="admin-content">
+      <main className={styles.content}>
         <>{children}</>
       </main>
     </>

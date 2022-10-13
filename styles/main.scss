@@ -1,66 +1,10 @@
-.menu {
-  display: flex;
-  align-items: center;
-  padding: 2rem 1rem 1rem;
-  color: $menuTextColor;
-
-  .menu__image-wrapper {
-    margin: 0 1rem 1rem 0;
-
-    @media (min-width: 768px) {
-      margin: 0;
-    }
-  }
-
-  .menu__avatar {
-    width: 40px;
-    height: 40px;
-    padding-right: 1em;
-    border-radius: 9999px;
-  }
-
-  .menu__text-links {
-    display: flex;
-    flex-direction: column;
-
-    .menu__link {
-      margin: 0 1rem 0 0;
-      border: none;
-      color: $text-primary-color;
-      text-decoration: none;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-
-    .menu__title {
-      margin: 0 0 .3em 0;
-      font-size: $font-size-title;
-    }
-
-    .menu__slogan {
-      text-align: center;
-      margin: 0;
-    }
-  }
-
-  @media (min-width: 768px) {
-    flex-direction: column;
-
-    .menu__image-wrapper {
-      margin-bottom: 1em;
-    }
-
-    .menu__title {
-      text-align: center;
-    }
-  }
-}
+@import 'variables';
+@import "hamburger";
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: .5rem 1rem 1rem;
+  padding: 0 0 1rem 1rem;
   overflow: auto;
 
   .content__back {
@@ -134,13 +78,13 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: $sm) {
     padding-top: 2rem;
   }
 }
 
 .tags {
-  padding: 1em 1.3em;
+  padding: 1.5em;
 
   * {
     margin-bottom: .5em;

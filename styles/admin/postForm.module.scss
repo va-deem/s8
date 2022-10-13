@@ -1,0 +1,39 @@
+.form {
+  width: 100%;
+
+  .label {
+    display: block;
+    margin-bottom: .5em;
+  }
+
+  input, textarea {
+    padding: .4em;
+    border: 1px solid #ececec;
+    border-radius: 3px;
+    font: inherit;
+
+    &:focus {
+      outline: none;
+      border: 1px solid #363636;
+      border-radius: 3px;
+    }
+  }
+
+  .input {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .textarea {
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .button {
+    display: block;
+    margin-top: 1em;
+  }
+}
+
+.preview {
+}
