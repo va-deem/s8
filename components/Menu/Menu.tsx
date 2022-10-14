@@ -3,7 +3,12 @@ import styles from './Menu.module.scss';
 import cx from 'clsx';
 import MenuList from '../MenuList/MenuList';
 
-const Menu = () => {
+interface MenuInterface {
+  resetTags?: () => void;
+}
+
+const Menu = (props: MenuInterface) => {
+  const { resetTags } = props;
   const [isActive, setIsCollapsed] = useState(false);
 
   const handleHamburgerClick = () => {
@@ -12,7 +17,13 @@ const Menu = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <div
+        className={styles.logo}
+        onClick={resetTags}
+        onKeyDown={resetTags}
+        role={'button'}
+        tabIndex={0}
+      >
         <div className={styles.logoText}>
           QQCH
           <div className={styles.logoSlogan}>Personal space</div>

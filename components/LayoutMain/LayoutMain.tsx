@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 
 export const siteTitle = 'QQCH | Personal space';

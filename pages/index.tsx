@@ -58,18 +58,22 @@ export default function Home(props: IHomeProps) {
     }
   };
 
+  const resetTagSelection = () => {
+    setSelectedTags([]);
+  };
+
   return (
     <LayoutMain home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Menu />
-      <main className="content">
-        <PostList posts={filteredData} />
-      </main>
+      <Menu resetTags={resetTagSelection} />
       <aside className="tags">
         <Tags tags={tags} selectTag={selectTag} selectedTags={selectedTags} />
       </aside>
+      <main className="content">
+        <PostList posts={filteredData} />
+      </main>
     </LayoutMain>
   );
 }

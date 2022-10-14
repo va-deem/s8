@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../MenuList/MenuList.module.scss';
-import Image from 'next/image';
+import styles from './MenuList.module.scss';
 import cx from 'clsx';
+import MenuItem from '../MenuItem/MenuItem';
 
 interface MenuListProps {
   isActive: boolean;
@@ -13,25 +13,11 @@ const MenuList = (props: MenuListProps) => {
   return (
     <div className={cx(styles.menuList, isActive && styles.active)}>
       <ul className={styles.items}>
-        <li className={styles.item}>
-          <Image
-            src="/images/blog-icon.svg"
-            className={styles.itemIcon}
-            height={22}
-            width={22}
-            alt=""
-          />
-          <span className={styles.itemText}>Blog</span>
+        <li>
+          <MenuItem name="Blog" url="/" icon="/images/blog-soo.png" />
         </li>
-        <li className={styles.item}>
-          <Image
-            src="/images/about-icon.svg"
-            className={styles.itemIcon}
-            height={22}
-            width={22}
-            alt=""
-          />
-          <span className={styles.itemText}>About</span>
+        <li>
+          <MenuItem name="About" url="/about" icon="/images/about-soo.png" />
         </li>
       </ul>
     </div>

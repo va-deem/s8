@@ -1,0 +1,25 @@
+@import '../../styles/variables';
+
+.item {
+  display: flex;
+  margin-bottom: 3rem;
+  cursor: pointer;
+
+  &.itemActive {
+    text-decoration: underline;
+    opacity: 1;
+    transition: opacity .5s ease;
+  }
+
+  @media (min-width: $sm) {
+    margin-bottom: 0;
+  }
+
+  .itemIcon {
+    margin-right: .5em;
+  }
+
+  .itemText {
+    margin: 0 2em 0 .5em;
+  }
+}
