@@ -1,7 +1,7 @@
 import React from 'react';
-import Date from './date';
-import { PostInterface } from '../types';
-import Tags from './tags';
+import Date from '../Date/Date';
+import { PostInterface } from '../../types';
+import Tags from '../Tags/Tags';
 
 interface IPostViewProps {
   postData: PostInterface;
@@ -17,7 +17,10 @@ const PostView = (props: IPostViewProps) => {
         <Date date={createdAt} />
         <Tags tags={tags.map((t) => t.tag)} />
       </p>
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} className="post-view__content" />
+      <div
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+        className="post-view__content"
+      />
     </>
   );
 };

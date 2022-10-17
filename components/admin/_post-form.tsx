@@ -1,3 +1,5 @@
+import styles from '/styles/admin/postForm.module.scss';
+
 import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
 import { PostInterface } from '../../types';
@@ -30,15 +32,15 @@ const PostForm = ({ submitForm, postData }: PostFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="post-form">
-      <label htmlFor="subject" className="post-form__label">
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <label htmlFor="subject" className={styles.label}>
         Subject
       </label>
 
       <input
         id="subject"
         type="text"
-        className="post-form__input"
+        className={styles.input}
         value={subject}
         onChange={handleSubject}
         required
@@ -46,23 +48,24 @@ const PostForm = ({ submitForm, postData }: PostFormProps) => {
 
       <textarea
         id="content"
-        className="post-form__textarea"
+        className={styles.textarea}
         rows={7}
         value={content}
         onChange={handleContent}
       />
 
-      <label htmlFor="react-select-9090" className="post-form__label">
+      <label htmlFor="react-select-9090" className={styles.label}>
         Tags
       </label>
       <Select tags={tags} setTags={setTags} />
 
-      <button type="submit" className="post-form__button">
+      <button type="submit" className={styles.button}>
         Save
       </button>
 
-      <ReactMarkdown className="preview">{content}</ReactMarkdown>
+      <ReactMarkdown className={styles.preview}>{content}</ReactMarkdown>
     </form>
   );
 };
+
 export default PostForm;

@@ -1,13 +1,14 @@
+import React from 'react';
 import Head from 'next/head';
 
-export const siteTitle = 'S8 | Personal website';
+export const siteTitle = 'QQCH | Personal space';
 
 interface ILayoutProps {
   children: React.ReactNode;
   home?: boolean;
 }
 
-export default function Layout({ children }: ILayoutProps) {
+export default function LayoutMain({ children }: ILayoutProps) {
   return (
     <>
       <Head>

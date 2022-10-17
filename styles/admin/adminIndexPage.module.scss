@@ -1,0 +1,52 @@
+.section {
+  margin: 2em 0;
+
+  .newLink {
+    margin-bottom: 1em;
+  }
+
+  .table {
+    width: 100%;
+
+    .tableHead th {
+      border-bottom: 1px solid gray;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    .tableBody {
+
+      td:not(:first-child) {
+        padding: 0 .7em;
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+
+    td {
+      padding: .5em 0;
+    }
+  }
+}
+
+.fa-icons {
+  svg {
+    height: 1em;
+  }
+
+  &:not(:last-child) {
+    margin-right: .7em;
+  }
+
+  &.with-text {
+    display: flex;
+    align-items: center;
+
+    color: inherit;
+    svg {
+      margin-right: .5em;
+    }
+  }
+}

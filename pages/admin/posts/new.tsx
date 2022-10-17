@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../../../components/admin/layout';
+import AdminLayout, { siteTitle } from '../../../components/admin/adminLayout';
 import PostForm from '../../../components/admin/_post-form';
 import { useRouter } from 'next/router';
 import convertToHtml from '../../../lib/mdToHtml';
@@ -21,14 +21,14 @@ const CreatePost = () => {
   };
 
   return (
-    <Layout>
+    <AdminLayout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section>
         <PostForm submitForm={handlePostCreate} />
       </section>
-    </Layout>
+    </AdminLayout>
   );
 };
 

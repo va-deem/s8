@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import { TagInterface } from '../types';
-import cn from 'classnames';
+import { TagInterface } from '../../types';
+import cx from 'clsx';
 
 type TagProps = {
   tags: TagInterface[];
@@ -16,7 +16,7 @@ const Tags = ({ tags, deleteTag, selectTag, selectedTags }: TagProps) => {
   const renderTag = (tag) => (
     <span
       key={tag.name}
-      className={cn(
+      className={cx(
         'tag',
         { 'tag-selectable': !!selectTag },
         { 'tag-selectable--active': isSelected(tag.name) }
@@ -28,7 +28,9 @@ const Tags = ({ tags, deleteTag, selectTag, selectedTags }: TagProps) => {
       tabIndex={0}
     >
       {tag.name}
-      {deleteTag ? <FontAwesomeIcon icon={faTimesCircle} onClick={deleteTag} /> : null}
+      {deleteTag ? (
+        <FontAwesomeIcon icon={faTimesCircle} onClick={deleteTag} />
+      ) : null}
     </span>
   );
 

@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+
+.menuList {
+  position: fixed;
+  top: 0;
+  right: -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform .5s ease, opacity .5s ease;
+  opacity: 0;
+  background-color: $secondary-color;
+
+  &.active {
+    transition: transform .5s ease, opacity .5s ease;
+    transform: translateX(-100%);
+    opacity: 1;
+
+    @media (min-width: $sm) {
+      transform: translateX(0);
+    }
+  }
+
+  @media (min-width: $sm) {
+    position: static;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: auto;
+    opacity: 1;
+    background-color: $primary-color;
+  }
+
+  .items {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+
+    @media (min-width: $sm) {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+
+    //.item {
+    //  display: flex;
+    //  margin-bottom: 3rem;
+    //  cursor: pointer;
+    //
+    //  &.itemActive {
+    //    text-decoration: underline;
+    //    opacity: 1;
+    //    transition: opacity .5s ease;
+    //  }
+    //
+    //  @media (min-width: $sm) {
+    //    margin-bottom: 0;
+    //  }
+    //
+    //  .itemIcon {
+    //    margin-right: .5em;
+    //  }
+    //
+    //  .itemText {
+    //    margin: 0 2em 0 .5em;
+    //  }
+    //}
+  }
+}

@@ -1,18 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+@import "fonts";
+@import 'variables';
 
 html,
 body {
   width: 100%;
   height: 100%;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 body {
+  font-family: $font-family-regular;
+  font-size: $font-size-normal;
   color: $text-primary-color;
   background-color: $primary-color;
-  font-family: 'PT Sans', sans-serif;
-  font-size: $font-size-normal;
+
 }
 
 body > * {
@@ -22,25 +24,44 @@ body > * {
 #__next {
   display: grid;
   min-width: 400px;
-  max-width: 900px;
   margin: 0 auto;
-
-  background-color: $secondary-color;
   grid-template-columns: 1fr;
-  grid-column-gap: 10px;
+}
+
+pre {
+  padding: .5em;
+}
+
+code {
+  font-family: $font-family-code;
+  font-size: $font-size-small;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: $text-primary-color;
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: $sm) {
   #__next {
     height: 100vh;
     grid-template-columns: 20% 1fr;
     grid-template-rows: min-content 1fr;
-    grid-column-gap: 10px;
+
+    header {
+      margin-bottom: 0;
+      grid-row-start: 1;
+      grid-column-start: 1;
+      grid-column-end: span 3;
+    }
 
     & > main {
       grid-column-start: 2;
-      grid-row-start: 1;
+      grid-row-start: 2;
       grid-row-end: span 2;
     }
   }
