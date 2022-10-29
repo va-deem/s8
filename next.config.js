@@ -3,6 +3,6 @@ module.exports = {
     webpack5: true,
   },
   env: {
-    DATABASE_URL: process.env.DATABASE_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 };

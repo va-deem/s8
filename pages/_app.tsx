@@ -1,11 +1,17 @@
 // import '../styles/normalize.scss';
 import '../styles/global.scss';
 import '../styles/main.scss';
+import { SessionProvider } from 'next-auth/react';
 
 import 'highlight.js/styles/github.css';
 
-import { AppProps } from 'next/app';
-
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
+  return (
+    <SessionProvider session={session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  );
 }
