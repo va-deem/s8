@@ -6,6 +6,8 @@
   flex-direction: column;
   padding: 0 0 1rem 1rem;
   overflow: auto;
+  width: 100%;
+  max-width: 42em;
 
   .content__back {
     font-size: $font-size-small;
