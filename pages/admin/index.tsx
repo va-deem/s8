@@ -10,14 +10,12 @@ const AdminIndexPage = () => {
       <section className={styles.section}>
         {session ? (
           <>
-            Signed in as {session.user.email}
-            <p> </p>
+            <p>Signed in as {session.user.email}</p>
             <button onClick={() => signOut()}>Sign out</button>
           </>
         ) : (
           <>
-            {`Not signed in, status ${status}`}
-            <p> </p>
+            <p>Not signed in, status ${status}</p>
             <button onClick={() => signIn()}>Sign in</button>
           </>
         )}
