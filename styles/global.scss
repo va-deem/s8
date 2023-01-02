@@ -1,6 +1,10 @@
 @import "fonts";
 @import 'variables';
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   width: 100%;
@@ -17,13 +21,9 @@ body {
 
 }
 
-body > * {
-  box-sizing: border-box;
-}
-
 #__next {
   display: grid;
-  min-width: 400px;
+  min-width: 380px;
   margin: 0 auto;
   grid-template-columns: 1fr;
 }
@@ -39,12 +39,13 @@ code {
 
 a {
   text-decoration: none;
-}
-
-a:visited {
   color: $text-primary-color;
-}
 
+  &:visited,
+  &:focus {
+    color: $text-primary-color;
+  }
+}
 
 @media (min-width: $sm) {
   #__next {

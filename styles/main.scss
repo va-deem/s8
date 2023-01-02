@@ -4,10 +4,9 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 0 0 1rem 1rem;
+  padding: 0 1rem 1rem;
   overflow: auto;
   width: 100%;
-  max-width: 42em;
 
   .content__back {
     font-size: $font-size-small;
@@ -54,6 +53,10 @@
     .post-list__item {
       margin-bottom: 1.5em;
       list-style: none;
+
+      @media (min-width: $sm) {
+        max-width: 42em;
+      }
 
       .post-list__title {
         text-decoration: none;
