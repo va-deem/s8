@@ -10,7 +10,8 @@
 
   .content__back {
     font-size: $font-size-small;
-    margin-bottom: 1rem;
+    opacity: .7;
+    margin-bottom: 1.5rem;
   }
 
   .post-view__title {
@@ -36,8 +37,22 @@
     margin-top: 1em;
 
     p {
-      max-width: 35em;
+      max-width: 42em;
     }
+
+    ul {
+      margin-left: 1rem;
+
+      @media (min-width: $sm) {
+        margin-left: auto;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+      }
+    }
+
 
     img {
       max-width: 100%;

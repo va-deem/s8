@@ -28,7 +28,7 @@ export default function Post({ post }: { post: PostInterface }) {
       <main className="content">
         <div className="content__back">
           <Link href="/">
-            <a>&larr; Recent posts</a>
+            <a>&larr; All posts</a>
           </Link>
         </div>
         <PostView postData={post} />
