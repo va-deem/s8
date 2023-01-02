@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'PUT') {
     try {
-      const post = await updatePostWithTags(postData);
+      const post = await updatePostWithTags(postId, postData);
       res.status(200).json({ post });
     } catch (e) {
       res.status(500).json({ error: e.message });

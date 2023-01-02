@@ -43,7 +43,10 @@ export const createPostWithTags = async (postData: PostInterface) => {
   });
 };
 
-export const updatePostWithTags = async (postData: PostInterface) => {
+export const updatePostWithTags = async (
+  postId: number,
+  postData: PostInterface
+) => {
   const postToUpdate = (postData: PostInterface) => {
     let tagsToSave = [];
 
@@ -58,10 +61,10 @@ export const updatePostWithTags = async (postData: PostInterface) => {
     return { ...postData, tags: { create: tagsToSave } };
   };
 
-  await prisma.$executeRaw`DELETE FROM "TagsOnPosts" WHERE "TagsOnPosts"."postId"=${postData.id};`;
+  await prisma.$executeRaw`DELETE FROM "TagsOnPosts" WHERE "TagsOnPosts"."postId"=${postId};`;
 
   return await prisma.post.update({
-    where: { id: Number(postData.id) },
+    where: { id: Number(postId) },
     data: postToUpdate(postData),
   });
 };

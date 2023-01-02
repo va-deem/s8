@@ -1,4 +1,3 @@
-// import '../styles/normalize.scss';
 import '../styles/global.scss';
 import '../styles/main.scss';
 import { SessionProvider } from 'next-auth/react';

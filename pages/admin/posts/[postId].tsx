@@ -29,7 +29,7 @@ const UpdatePost = ({ postData }: { postData: PostInterface }) => {
     try {
       const response = await updatePost(postData.id, formValues);
       alert('Post updated successfully!');
-      router.replace(`/posts/${response.data.post.id}`);
+      await router.replace(`/posts/${response.data.post.id}`);
     } catch (e) {
       alert(e.response.status);
     }
