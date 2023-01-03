@@ -5,13 +5,14 @@
   display: flex;
   flex-direction: column;
   padding: 0 1rem 1rem;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
 
   .content__back {
     font-size: $font-size-small;
     opacity: .7;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
   }
 
   .post-view__title {
@@ -34,17 +35,20 @@
   }
 
   .post-view__content {
-    margin-top: 1em;
-
+    @media (min-width: $sm) {
+      margin-top: 1em;
+    }
+    
     p {
       max-width: 42em;
     }
 
-    ul {
-      margin-left: 1rem;
+    ul,
+    ol {
+      padding-left: 1rem;
 
       @media (min-width: $sm) {
-        margin-left: auto;
+        padding-left: 2rem;
       }
 
       pre {

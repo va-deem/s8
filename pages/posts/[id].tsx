@@ -26,12 +26,12 @@ export default function Post({ post }: { post: PostInterface }) {
       </Head>
       <Menu />
       <main className="content">
+        <PostView postData={post} />
         <div className="content__back">
           <Link href="/">
             <a>&larr; All posts</a>
           </Link>
         </div>
-        <PostView postData={post} />
       </main>
     </LayoutMain>
   );
