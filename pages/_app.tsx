@@ -3,6 +3,7 @@ import '../styles/main.scss';
 import { SessionProvider } from 'next-auth/react';
 
 import 'highlight.js/styles/github.css';
+import { AppWrapper } from '../context/AppContext';
 
 export default function App({
   Component,
@@ -10,7 +11,9 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
     </SessionProvider>
   );
 }

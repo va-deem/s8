@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './Menu.module.scss';
 import cx from 'clsx';
 import MenuList from '../MenuList/MenuList';
+import { useAppContext } from '../../context/AppContext';
+import { useRouter } from 'next/router';
 
 interface MenuInterface {
   resetTags?: () => void;
@@ -11,6 +13,17 @@ const Menu = (props: MenuInterface) => {
   const { resetTags } = props;
   const [isActive, setIsCollapsed] = useState(false);
 
+  const { currentPage } = useAppContext();
+  const router = useRouter();
+
+  const handleLogoClick = async () => {
+    if (currentPage === 'postView') {
+      await router.replace('/');
+    } else {
+      resetTags();
+    }
+  };
+
   const handleHamburgerClick = () => {
     setIsCollapsed(!isActive);
   };
@@ -19,8 +32,8 @@ const Menu = (props: MenuInterface) => {
     <header className={styles.header}>
       <div
         className={styles.logo}
-        onClick={resetTags}
-        onKeyDown={resetTags}
+        onClick={handleLogoClick}
+        onKeyDown={handleLogoClick}
         role={'button'}
         tabIndex={0}
       >

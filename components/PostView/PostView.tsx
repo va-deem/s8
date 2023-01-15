@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Date from '../Date/Date';
 import { PostInterface } from '../../types';
 import Tags from '../Tags/Tags';
+import { useAppContext } from '../../context/AppContext';
 
 interface IPostViewProps {
   postData: PostInterface;
@@ -9,6 +10,12 @@ interface IPostViewProps {
 
 const PostView = (props: IPostViewProps) => {
   const { subject, createdAt, tags, contentHtml } = props.postData;
+
+  const { setCurrentPage } = useAppContext();
+
+  useEffect(() => {
+    setCurrentPage('postView');
+  }, [setCurrentPage]);
 
   return (
     <>
