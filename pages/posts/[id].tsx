@@ -5,6 +5,7 @@ import { PostInterface } from '../../types';
 import Menu from '../../components/Menu/Menu';
 import PostView from '../../components/PostView/PostView';
 import { getPost } from '../../services/dbService';
+import styles from './id.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
@@ -21,9 +22,9 @@ export default function Post({ post }: { post: PostInterface }) {
   return (
     <LayoutMain title={post.subject}>
       <Menu />
-      <main className="content">
+      <main className={styles.content}>
         <PostView postData={post} />
-        <div className="content__back">
+        <div className={styles.back}>
           <Link href="/">
             <a>&larr; All posts</a>
           </Link>

@@ -1,0 +1,25 @@
+@import "../styles/_variables";
+
+.tags {
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 1rem;
+  grid-area: tags;
+  gap: .5em .2em;
+}
+
+.content {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 1rem 1rem;
+  grid-area: content;
+
+  @media (min-width: $sm) {
+    padding-top: 2rem;
+  }
+}

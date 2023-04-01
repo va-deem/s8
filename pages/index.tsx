@@ -7,6 +7,7 @@ import PostList from '../components/PostList/PostList';
 import Menu from '../components/Menu/Menu';
 import checkCommonTags from '../utils/checkCommonTags';
 import { getPosts, getTags } from '../services/dbService';
+import styles from './index.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
@@ -64,10 +65,10 @@ export default function Home(props: IHomeProps) {
   return (
     <LayoutMain title={siteTitle}>
       <Menu resetTags={resetTagSelection} />
-      <aside className="tags">
+      <aside className={styles.tags}>
         <Tags tags={tags} selectTag={selectTag} selectedTags={selectedTags} />
       </aside>
-      <main className="content">
+      <main className={styles.content}>
         <PostList posts={filteredData} />
       </main>
     </LayoutMain>

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { TagInterface } from '../../types';
 import cx from 'clsx';
+import styles from './Tags.module.scss';
 
 type TagProps = {
   tags: TagInterface[];
@@ -17,9 +18,10 @@ const Tags = ({ tags, deleteTag, selectTag, selectedTags }: TagProps) => {
     <span
       key={tag.name}
       className={cx(
-        'tag',
-        { 'tag-selectable': !!selectTag },
-        { 'tag-selectable--active': isSelected(tag.name) }
+        styles.tag,
+        { [styles.tagSelectable]: !!selectTag },
+        { [styles.tagSelectableActive]: isSelected(tag.name) },
+        { [styles.tagInline]: !selectTag }
       )}
       data-id={tag.id}
       onClick={selectTag}

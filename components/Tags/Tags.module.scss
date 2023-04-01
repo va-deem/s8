@@ -1,0 +1,46 @@
+@import '../../styles/_variables.scss';
+
+.tag {
+  font-size: $font-size-small;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  margin-right: .3em;
+  padding: .2em .5em;
+  border-radius: .5em;
+  background-color: hsl(163, 40%, 90%);
+
+  &:hover {
+    background-color: hsl(163, 40%, 85%);
+  }
+
+  svg {
+    height: 1em;
+    margin-left: .2em;
+    cursor: pointer;
+  }
+}
+
+.tagSelectable {
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+
+  &Active {
+    transition: background-color 0.4s ease;
+    background-color: hsl(163, 40%, 70%);
+  }
+}
+
+.tagInline {
+  font-size: $font-size-tiny;
+  border: 1px solid $inputPlaceholder;
+  background-color: inherit;
+
+  &:hover {
+    user-select: none;
+    background-color: inherit;
+  }
+}

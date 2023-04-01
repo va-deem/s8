@@ -3,6 +3,7 @@ import Date from '../Date/Date';
 import { PostInterface } from '../../types';
 import Tags from '../Tags/Tags';
 import { useAppContext } from '../../context/AppContext';
+import styles from './PostView.module.scss';
 
 interface IPostViewProps {
   postData: PostInterface;
@@ -19,14 +20,14 @@ const PostView = (props: IPostViewProps) => {
 
   return (
     <>
-      <h1 className="post-view__title">{subject}</h1>
-      <p className="post-view__details">
+      <h1 className={styles.title}>{subject}</h1>
+      <p className={styles.details}>
         <Date date={createdAt} />
         <Tags tags={tags.map((t) => t.tag)} />
       </p>
       <div
         dangerouslySetInnerHTML={{ __html: contentHtml }}
-        className="post-view__content"
+        className={styles.content}
       />
     </>
   );

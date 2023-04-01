@@ -1,0 +1,21 @@
+@import '../../styles/_variables';
+
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+
+  @media (min-width: $sm) {
+    padding-top: 2rem;
+  }
+}
+
+.back {
+  font-size: $font-size-small;
+  opacity: .7;
+  margin: 1.5rem 0;
+}
