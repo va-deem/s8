@@ -1,6 +1,7 @@
-@import '../../styles/variables';
+@import '../../styles/_variables';
 
 .header {
+  grid-area: header;
   position: sticky;
   top: 0;
   display: flex;
@@ -8,34 +9,30 @@
   padding: 0 0 .25rem 1rem;
   background-color: $primary-color;
   box-shadow: -1px 2px 30px -10px rgba(51, 51, 51, 0.1);
-  margin-bottom: 1rem;
+  margin-bottom: .7rem;
 
   .logo {
-    padding-bottom: .5rem;
     cursor: pointer;
+    height: 52px;
+    padding: 8px 0 5px;
+    margin-bottom: 10px;
+    position: relative;
 
-    .logoText {
-      font-family: 'Londrina Shadow', 'Arial', sans-serif;
-      font-size: 52px;
-      position: relative;
+    .logoSlogan {
+      font-family: $font-family-regular;
+      font-size: $font-size-wee;
+      position: absolute;
+      right: 0;
+      bottom: -6px;
       user-select: none;
+    }
 
-      @media (min-width: $sm) {
-        font-size: 76px;
-      }
+    @media (min-width: $sm) {
+      height: 76px;
 
       .logoSlogan {
-        font-family: $font-family-regular;
-        font-size: $font-size-wee;
-        position: absolute;
-        right: 0;
+        font-size: $font-size-tiny;
         bottom: -6px;
-        user-select: none;
-
-        @media (min-width: $sm) {
-          font-size: $font-size-tiny;
-          bottom: -6px;
-        }
       }
     }
   }

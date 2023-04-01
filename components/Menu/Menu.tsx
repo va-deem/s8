@@ -4,6 +4,7 @@ import cx from 'clsx';
 import MenuList from '../MenuList/MenuList';
 import { useAppContext } from '../../context/AppContext';
 import { useRouter } from 'next/router';
+import { Logo } from '../svg/Logo';
 
 interface MenuInterface {
   resetTags?: () => void;
@@ -37,10 +38,8 @@ const Menu = (props: MenuInterface) => {
         role={'button'}
         tabIndex={0}
       >
-        <div className={styles.logoText}>
-          QQCH
-          <div className={styles.logoSlogan}>Personal space</div>
-        </div>
+        <Logo />
+        <div className={styles.logoSlogan}>Personal space</div>
       </div>
       <div className={styles.menu}>
         <button

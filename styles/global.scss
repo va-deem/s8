@@ -1,5 +1,5 @@
-@import "fonts";
-@import 'variables';
+@import "_fonts";
+@import '_variables';
 
 * {
   box-sizing: border-box;
@@ -18,14 +18,10 @@ body {
   font-size: $font-size-normal;
   color: $text-primary-color;
   background-color: $primary-color;
-
 }
 
 #__next {
-  display: grid;
-  min-width: 380px;
-  margin: 0 auto;
-  grid-template-columns: 1fr;
+  height: 100vh;
 }
 
 pre {
@@ -48,26 +44,5 @@ a {
   &:visited,
   &:focus {
     color: $text-primary-color;
-  }
-}
-
-@media (min-width: $sm) {
-  #__next {
-    height: 100vh;
-    grid-template-columns: 20% 1fr;
-    grid-template-rows: min-content 1fr;
-
-    header {
-      margin-bottom: 0;
-      grid-row-start: 1;
-      grid-column-start: 1;
-      grid-column-end: span 3;
-    }
-
-    & > main {
-      grid-column-start: 2;
-      grid-row-start: 2;
-      grid-row-end: span 2;
-    }
   }
 }

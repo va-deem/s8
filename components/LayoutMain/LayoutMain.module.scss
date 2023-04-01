@@ -1,0 +1,21 @@
+@import '../../styles/_variables';
+
+.container {
+  display: grid;
+  grid-template-rows: min-content min-content 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "tags"
+    "content"
+}
+
+@media (min-width: $sm) {
+  .container {
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: 20% 80%;
+    grid-template-areas:
+    "header header"
+    "tags content";
+  }
+}

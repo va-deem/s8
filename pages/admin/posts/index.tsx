@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './list.module.scss';
+import styles from './index.module.scss';
 import AdminLayout from '../../../components/admin/adminLayout';
 import { GetServerSideProps } from 'next';
 import prisma from '../../../lib/prisma';
@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Tags from '../../../components/Tags/Tags';
 import { deletePost } from '../../../services/blogService';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await prisma.post.findMany({
@@ -51,6 +51,7 @@ const AdminIndexPage = ({ data }: { data: PostInterface[] }) => {
   return (
     <AdminLayout adminHome>
       <section className={styles.section}>
+        <button onClick={() => signOut()}>Sign out</button>
         <div className={styles.newLink}>
           <Link href="/admin/posts/new">
             <a>Create a post</a>

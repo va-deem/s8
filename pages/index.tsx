@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import LayoutMain, { siteTitle } from '../components/LayoutMain/LayoutMain';
 import { PostInterface, TagInterface } from '../types';
@@ -63,10 +62,7 @@ export default function Home(props: IHomeProps) {
   };
 
   return (
-    <LayoutMain home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <LayoutMain title={siteTitle}>
       <Menu resetTags={resetTagSelection} />
       <aside className="tags">
         <Tags tags={tags} selectTag={selectTag} selectedTags={selectedTags} />
