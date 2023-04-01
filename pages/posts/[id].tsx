@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import LayoutMain from '../../components/LayoutMain/LayoutMain';
@@ -20,10 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 export default function Post({ post }: { post: PostInterface }) {
   return (
-    <LayoutMain>
-      <Head>
-        <title>{post.subject}</title>
-      </Head>
+    <LayoutMain title={post.subject}>
       <Menu />
       <main className="content">
         <PostView postData={post} />
